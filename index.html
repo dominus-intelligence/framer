@@ -3,711 +3,704 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIX Compliance Schulung – Maintaining a Harassment-Free Workplace</title>
+<title>SIX Compliance – Maintaining a Harassment-Free Workplace</title>
 <style>
-  /* ===== RESET & BASE ===== */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    background: #F4F6F8;
-    color: #1A1A1A;
-    min-height: 100vh;
-  }
-
-  /* ===== HEADER ===== */
-  #app-header {
-    background: #1B3A5C;
-    color: #fff;
-    padding: 0 24px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-  }
-
-  .logo-block {
-    display: flex;
-    align-items: flex-end;
-    gap: 0;
-  }
-
-  .logo-text {
-    font-size: 32px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-
-  .logo-bar {
-    display: block;
-    height: 4px;
-    background: #E8392A;
-    border-radius: 2px;
-    margin-top: 3px;
-  }
-
-  .header-title {
-    margin-left: 20px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    font-weight: 400;
-    border-left: 1px solid rgba(255,255,255,0.25);
-    padding-left: 20px;
-  }
-
-  /* ===== PROGRESS BAR ===== */
-  #progress-section {
-    background: #fff;
-    border-bottom: 1px solid #e0e4e8;
-    padding: 10px 24px;
-    display: none;
-  }
-
-  .progress-label {
-    font-size: 12px;
-    color: #555;
-    margin-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .progress-track {
-    height: 6px;
-    background: #DDDDDD;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: #E8392A;
-    border-radius: 3px;
-    transition: width 0.5s ease;
-  }
-
-  /* ===== MAIN CONTENT ===== */
-  #main-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 32px 24px 64px;
-  }
-
-  /* ===== SCREENS ===== */
-  .screen {
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
-
-  .screen.active {
-    display: block;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ===== CARDS ===== */
-  .card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-
-  .card-sm { padding: 20px 24px; }
-
-  /* ===== TYPOGRAPHY ===== */
-  h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1B3A5C;
-    margin-bottom: 8px;
-    line-height: 1.25;
-  }
-
-  h2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1B3A5C;
-    margin-bottom: 8px;
-  }
-
-  h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1B3A5C;
-    margin-bottom: 8px;
-  }
-
-  .subtitle {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 20px;
-  }
-
-  p { margin-bottom: 12px; }
-
-  ul {
-    margin: 8px 0 12px 20px;
-  }
-
-  ul li { margin-bottom: 4px; }
-
-  /* ===== BUTTONS ===== */
-  .btn {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    transition: background 0.18s, color 0.18s, transform 0.1s;
-    text-decoration: none;
-  }
-
-  .btn:active { transform: scale(0.98); }
-
-  .btn-primary {
-    background: #1B3A5C;
-    color: #fff;
-  }
-
-  .btn-primary:hover { background: #142d48; }
-
-  .btn-secondary {
-    background: #fff;
-    color: #1B3A5C;
-    border: 2px solid #1B3A5C;
-  }
-
-  .btn-secondary:hover { background: #f0f4f8; }
-
-  .btn-danger-outline {
-    background: #fff;
-    color: #E8392A;
-    border: 2px solid #E8392A;
-  }
-
-  .btn-danger-outline:hover { background: #fff5f4; }
-
-  .btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* ===== FORM INPUTS ===== */
-  .form-group { margin-bottom: 18px; }
-
-  label {
-    display: block;
-    font-weight: 700;
-    font-size: 14px;
-    color: #1B3A5C;
-    margin-bottom: 6px;
-  }
-
-  input[type="text"], input[type="email"] {
-    width: 100%;
-    padding: 12px 14px;
-    border: 2px solid #dde2e8;
-    border-radius: 8px;
-    font-size: 15px;
-    transition: border-color 0.18s;
-    outline: none;
-  }
-
-  input[type="text"]:focus, input[type="email"]:focus {
-    border-color: #1B3A5C;
-  }
-
-  /* ===== MODULE BADGE ===== */
-  .module-badge {
-    display: inline-block;
-    background: #E8392A;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  /* ===== THEORY BOX ===== */
-  .theory-box {
-    background: #f0f4f8;
-    border-left: 4px solid #1B3A5C;
-    border-radius: 0 8px 8px 0;
-    padding: 20px 24px;
-    margin-bottom: 20px;
-  }
-
-  .theory-box p:last-child { margin-bottom: 0; }
-
-  /* ===== SCENARIO CARD ===== */
-  .scenario-card {
-    background: #1B3A5C;
-    color: #fff;
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 20px;
-    position: relative;
-  }
-
-  .scenario-card .scenario-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 10px;
-  }
-
-  .scenario-card p { color: #fff; margin-bottom: 0; }
-
-  .scenario-emoji {
-    font-size: 28px;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  /* ===== ANSWER OPTIONS ===== */
-  .answer-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-
-  .answer-btn {
-    background: #fff;
-    border: 2px solid #dde2e8;
-    border-radius: 8px;
-    padding: 14px 18px;
-    text-align: left;
-    font-size: 15px;
-    cursor: pointer;
-    transition: border-color 0.18s, background 0.18s;
-    line-height: 1.4;
-    color: #1A1A1A;
-  }
-
-  .answer-btn:hover:not(:disabled) {
-    border-color: #1B3A5C;
-    background: #f0f4f8;
-  }
-
-  .answer-btn.correct {
-    border-color: #2E7D32;
-    background: #e8f5e9;
-    color: #1B5E20;
-  }
-
-  .answer-btn.wrong {
-    border-color: #C62828;
-    background: #ffebee;
-    color: #B71C1C;
-  }
-
-  .answer-btn.partial {
-    border-color: #E8392A;
-    background: #fff8f0;
-    color: #BF360C;
-  }
-
-  .answer-btn:disabled { cursor: default; }
-
-  /* ===== FEEDBACK BOX ===== */
-  .feedback-box {
-    display: none;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 16px;
-    font-size: 15px;
-    line-height: 1.5;
-    animation: fadeIn 0.25s ease;
-  }
-
-  .feedback-box.show { display: block; }
-
-  .feedback-correct {
-    background: #e8f5e9;
-    border: 1px solid #a5d6a7;
-    color: #1B5E20;
-  }
-
-  .feedback-wrong {
-    background: #ffebee;
-    border: 1px solid #ef9a9a;
-    color: #B71C1C;
-  }
-
-  .feedback-partial {
-    background: #fff8f0;
-    border: 1px solid #ffcc80;
-    color: #BF360C;
-  }
-
-  /* ===== QUIZ QUESTION ===== */
-  .quiz-question-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    padding: 24px;
-    margin-bottom: 16px;
-    animation: fadeIn 0.3s ease;
-  }
-
-  .question-number {
-    font-size: 12px;
-    font-weight: 700;
-    color: #E8392A;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-  }
-
-  .question-text {
-    font-size: 17px;
-    font-weight: 700;
-    color: #1B3A5C;
-    margin-bottom: 16px;
-    line-height: 1.4;
-  }
-
-  /* ===== PRETEST ===== */
-  .pretest-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  /* ===== RESULT BANNER ===== */
-  .result-banner {
-    border-radius: 8px;
-    padding: 20px 24px;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  .result-banner.pass {
-    background: #e8f5e9;
-    border: 2px solid #2E7D32;
-    color: #1B5E20;
-  }
-
-  .result-banner.fail {
-    background: #ffebee;
-    border: 2px solid #C62828;
-    color: #B71C1C;
-  }
-
-  .result-banner .result-score {
-    font-size: 40px;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  /* ===== CONTACT CARDS ===== */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin: 16px 0;
-  }
-
-  @media (max-width: 600px) {
-    .contact-grid { grid-template-columns: 1fr; }
-  }
-
-  .contact-card {
-    background: #f0f4f8;
-    border-radius: 8px;
-    padding: 16px;
-    border-left: 4px solid #E8392A;
-  }
-
-  .contact-card .contact-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #555;
-    margin-bottom: 4px;
-  }
-
-  .contact-card a {
-    color: #1B3A5C;
-    font-size: 13px;
-    font-weight: 700;
-    word-break: break-all;
-    text-decoration: none;
-  }
-
-  .contact-card a:hover { text-decoration: underline; }
-
-  /* ===== FLOWCHART ===== */
-  .flow-step {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    margin-bottom: 16px;
-  }
-
-  .flow-number {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #1B3A5C;
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .flow-content { flex: 1; padding-top: 4px; }
-
-  .flow-arrow {
-    text-align: center;
-    color: #555;
-    margin: -8px 0 8px 16px;
-    font-size: 18px;
-  }
-
-  /* ===== DECISION BUTTONS ===== */
-  .decision-btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 16px 0;
-  }
-
-  @media (max-width: 500px) {
-    .decision-btns { grid-template-columns: 1fr; }
-  }
-
-  .decision-btn {
-    padding: 18px;
-    border-radius: 8px;
-    border: 2px solid #1B3A5C;
-    background: #fff;
-    color: #1B3A5C;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.18s;
-  }
-
-  .decision-btn:hover { background: #1B3A5C; color: #fff; }
-  .decision-btn.selected { background: #1B3A5C; color: #fff; }
-
-  /* ===== FLOWCHART PATH ===== */
-  .flow-path {
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
-
-  .flow-path.visible { display: block; }
-
-  /* ===== CERTIFICATE ===== */
-  .certificate-wrapper {
-    border: 3px solid #1B3A5C;
-    border-radius: 8px;
-    padding: 40px;
-    text-align: center;
-    background: #fff;
-    position: relative;
-    margin-bottom: 24px;
-  }
-
-  .certificate-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 6px; left: 6px; right: 6px; bottom: 6px;
-    border: 1px solid #dde2e8;
-    border-radius: 4px;
-    pointer-events: none;
-  }
-
-  .cert-logo {
-    font-size: 42px;
-    font-weight: 900;
-    color: #1B3A5C;
-    letter-spacing: -2px;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .cert-logo-bar {
-    display: block;
-    height: 4px;
-    width: 48px;
-    background: #E8392A;
-    border-radius: 2px;
-    margin: 0 auto 20px;
-  }
-
-  .cert-subtitle {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #555;
-    margin-bottom: 24px;
-  }
-
-  .cert-title {
-    font-size: 28px;
-    font-weight: 900;
-    color: #1B3A5C;
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .cert-body {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 8px;
-  }
-
-  .cert-name {
-    font-size: 26px;
-    font-weight: 700;
-    color: #1B3A5C;
-    margin: 12px 0;
-    border-bottom: 2px solid #1B3A5C;
-    display: inline-block;
-    padding-bottom: 4px;
-    min-width: 200px;
-  }
-
-  .cert-course {
-    font-size: 17px;
-    font-style: italic;
-    color: #333;
-    margin: 12px 0;
-  }
-
-  .cert-result {
-    font-size: 15px;
-    color: #555;
-    margin-top: 20px;
-  }
-
-  .cert-divider {
-    height: 1px;
-    background: #dde2e8;
-    margin: 20px auto;
-    max-width: 300px;
-  }
-
-  /* ===== NAV BUTTONS ===== */
-  .nav-row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-top: 8px;
-    flex-wrap: wrap;
-  }
-
-  /* ===== SECTION DIVIDER ===== */
-  .section-divider {
-    height: 1px;
-    background: #e0e4e8;
-    margin: 24px 0;
-  }
-
-  /* ===== START SCREEN SPECIAL ===== */
-  .start-logo-block {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .start-logo-text {
-    font-size: 72px;
-    font-weight: 900;
-    color: #1B3A5C;
-    letter-spacing: -4px;
-    line-height: 1;
-  }
-
-  .start-logo-bar {
-    display: block;
-    height: 6px;
-    width: 80px;
-    background: #E8392A;
-    border-radius: 3px;
-    margin: 6px auto 0;
-  }
-
-  /* ===== PRINT STYLES ===== */
-  @media print {
-    #app-header, #progress-section, .no-print { display: none !important; }
-    body { background: #fff; }
-    .certificate-wrapper { border: 3px solid #1B3A5C; page-break-inside: avoid; }
-    .screen { display: none !important; }
-    #screen-cert { display: block !important; }
-    #main-content { padding: 0; max-width: 100%; }
-  }
-
-  /* ===== UTILITIES ===== */
-  .text-center { text-align: center; }
-  .mt-8 { margin-top: 8px; }
-  .mt-16 { margin-top: 16px; }
-  .mt-24 { margin-top: 24px; }
-  .mb-0 { margin-bottom: 0; }
-  .hidden { display: none; }
-  .color-success { color: #2E7D32; }
-  .color-error { color: #C62828; }
-  .color-primary { color: #1B3A5C; }
-
-  .info-box {
-    background: #e8f0fb;
-    border-left: 4px solid #1B3A5C;
-    border-radius: 0 8px 8px 0;
-    padding: 14px 18px;
-    margin: 16px 0;
-    font-size: 14px;
-    color: #1B3A5C;
-  }
-
-  .warning-box {
-    background: #fff8e1;
-    border-left: 4px solid #F9A825;
-    border-radius: 0 8px 8px 0;
-    padding: 14px 18px;
-    margin: 16px 0;
-    font-size: 14px;
-    color: #5D4037;
-  }
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: #F4F6F8;
+  color: #1A1A1A;
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+#app-header {
+  background: #FFFFFF;
+  border-bottom: 3px solid #E8392A;
+  padding: 0 28px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* SIX logo – replace img src with official SVG file if available */
+.six-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.six-logo-svg {
+  height: 36px;
+  width: auto;
+}
+
+.header-divider {
+  width: 1px;
+  height: 28px;
+  background: #E0E4E8;
+}
+
+.header-subtitle {
+  font-size: 13px;
+  color: #555;
+  font-weight: 400;
+}
+
+/* Score in header */
+.header-score {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: #FFF5F4;
+  border: 1.5px solid #E8392A;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #E8392A;
+}
+
+.header-score.visible { display: flex; }
+.score-star { font-size: 16px; }
+
+/* ===== PROGRESS BAR ===== */
+#progress-section {
+  background: #fff;
+  border-bottom: 1px solid #e8ecf0;
+  padding: 10px 28px;
+  display: none;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.progress-track {
+  height: 5px;
+  background: #DDDDDD;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #E8392A;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* ===== MAIN ===== */
+#main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ===== SCREENS ===== */
+.screen { display: none; animation: fadeIn 0.3s ease; }
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+/* ===== TYPE ===== */
+h1 { font-size: 28px; font-weight: 700; color: #1A1A1A; margin-bottom: 8px; line-height: 1.25; }
+h2 { font-size: 22px; font-weight: 700; color: #1A1A1A; margin-bottom: 8px; }
+h3 { font-size: 18px; font-weight: 700; color: #1A1A1A; margin-bottom: 8px; }
+.subtitle { font-size: 15px; color: #555; margin-bottom: 20px; }
+p { margin-bottom: 12px; }
+ul { margin: 8px 0 12px 20px; }
+ul li { margin-bottom: 4px; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: #E8392A; color: #fff; }
+.btn-primary:hover { background: #c42d20; }
+.btn-secondary { background: #fff; color: #E8392A; border: 2px solid #E8392A; }
+.btn-secondary:hover { background: #FFF5F4; }
+.btn-dark { background: #1A1A1A; color: #fff; }
+.btn-dark:hover { background: #333; }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+/* ===== FORMS ===== */
+.form-group { margin-bottom: 18px; }
+label { display: block; font-weight: 700; font-size: 14px; color: #1A1A1A; margin-bottom: 6px; }
+input[type="text"], input[type="email"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #E0E4E8;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.18s;
+}
+input:focus { border-color: #E8392A; }
+
+/* ===== MODULE BADGE ===== */
+.module-badge {
+  display: inline-block;
+  background: #E8392A;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.module-badge.green { background: #2E7D32; }
+.module-badge.dark  { background: #1A1A1A; }
+
+/* ===== THEORY BOX ===== */
+.theory-box {
+  background: #FFF5F4;
+  border-left: 4px solid #E8392A;
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.theory-box p:last-child { margin-bottom: 0; }
+
+/* ===== VIDEO PLACEHOLDER ===== */
+.video-block {
+  background: #1A1A1A;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+.video-poster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  cursor: pointer;
+  gap: 12px;
+}
+.video-poster:hover .play-btn-circle { background: #E8392A; transform: scale(1.08); }
+.play-btn-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.play-icon { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 20px solid #fff; margin-left: 4px; }
+.video-caption { color: rgba(255,255,255,0.7); font-size: 13px; }
+.video-title-txt { color: #fff; font-size: 15px; font-weight: 700; text-align: center; padding: 0 20px; }
+.video-info-bar {
+  background: rgba(0,0,0,0.4);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.video-info-bar span { color: rgba(255,255,255,0.6); font-size: 12px; }
+.video-filename { color: #E8392A !important; font-weight: 700 !important; font-family: monospace; }
+
+/* Actual video element (shown when file available) */
+.video-block video { width: 100%; display: block; }
+
+/* ===== SCENARIO CARD ===== */
+.scenario-card {
+  background: #1A1A1A;
+  color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.scenario-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; display: block;
+}
+.scenario-emoji { font-size: 28px; margin-bottom: 10px; display: block; }
+.scenario-card p { color: #fff; margin-bottom: 0; }
+
+/* ===== ANSWER OPTIONS ===== */
+.answer-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.answer-btn {
+  background: #fff;
+  border: 2px solid #E0E4E8;
+  border-radius: 8px;
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.18s;
+  line-height: 1.4;
+  color: #1A1A1A;
+}
+.answer-btn:hover:not(:disabled) { border-color: #E8392A; background: #FFF5F4; }
+.answer-btn.correct { border-color: #2E7D32; background: #E8F5E9; color: #1B5E20; }
+.answer-btn.wrong   { border-color: #C62828; background: #FFEBEE; color: #B71C1C; }
+.answer-btn.partial { border-color: #E65100; background: #FFF3E0; color: #BF360C; }
+.answer-btn:disabled { cursor: default; }
+
+/* ===== FEEDBACK ===== */
+.feedback-box { display: none; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; font-size: 15px; line-height: 1.5; animation: fadeIn 0.25s ease; }
+.feedback-box.show { display: block; }
+.feedback-correct { background: #E8F5E9; border: 1px solid #A5D6A7; color: #1B5E20; }
+.feedback-wrong   { background: #FFEBEE; border: 1px solid #EF9A9A; color: #B71C1C; }
+.feedback-partial { background: #FFF3E0; border: 1px solid #FFCC80; color: #BF360C; }
+
+/* ===== QUIZ QUESTIONS ===== */
+.quiz-question-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 24px;
+  margin-bottom: 16px;
+  animation: fadeIn 0.3s ease;
+}
+.question-number { font-size: 12px; font-weight: 700; color: #E8392A; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.question-text   { font-size: 17px; font-weight: 700; color: #1A1A1A; margin-bottom: 16px; line-height: 1.4; }
+
+/* ===== RESULT BANNER ===== */
+.result-banner { border-radius: 8px; padding: 20px 24px; text-align: center; margin-bottom: 24px; }
+.result-banner.pass { background: #E8F5E9; border: 2px solid #2E7D32; color: #1B5E20; }
+.result-banner.fail { background: #FFEBEE; border: 2px solid #C62828; color: #B71C1C; }
+.result-score { font-size: 42px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+
+/* ===== CONTACT CARDS ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-card {
+  background: #F4F6F8;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #E8392A;
+}
+.contact-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+.contact-card a { color: #1A1A1A; font-size: 13px; font-weight: 700; word-break: break-all; text-decoration: none; }
+.contact-card a:hover { color: #E8392A; text-decoration: underline; }
+
+/* ===== FLOW ===== */
+.flow-step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+.flow-number {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: #E8392A; color: #fff; font-weight: 700; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.flow-content { flex: 1; padding-top: 4px; }
+.flow-arrow { text-align: center; color: #999; margin: -6px 0 8px 16px; font-size: 18px; }
+
+.decision-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+@media (max-width: 500px) { .decision-btns { grid-template-columns: 1fr; } }
+.decision-btn {
+  padding: 18px; border-radius: 8px; border: 2px solid #E8392A;
+  background: #fff; color: #E8392A; font-size: 15px; font-weight: 700;
+  cursor: pointer; text-align: center; transition: all 0.18s;
+}
+.decision-btn:hover, .decision-btn.selected { background: #E8392A; color: #fff; }
+
+.flow-path { display: none; animation: fadeIn 0.3s ease; }
+.flow-path.visible { display: block; }
+
+/* ===== INFO/WARNING BOX ===== */
+.info-box {
+  background: #FFF5F4; border-left: 4px solid #E8392A;
+  border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 14px; color: #1A1A1A;
+}
+.warning-box {
+  background: #FFF8E1; border-left: 4px solid #F9A825;
+  border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 14px; color: #5D4037;
+}
+
+/* ===== NAV ROW ===== */
+.nav-row { display: flex; gap: 12px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+.section-divider { height: 1px; background: #E8ECF0; margin: 24px 0; }
+
+/* ===== POINTS BADGE in card ===== */
+.points-badge {
+  display: inline-block;
+  background: #FFF5F4;
+  border: 1.5px solid #E8392A;
+  color: #E8392A;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+/* ===================================================================
+   JUDGE GAME
+   ================================================================ */
+.judge-header {
+  background: #1A1A1A;
+  color: #fff;
+  border-radius: 8px;
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.judge-header h2 { color: #fff; margin-bottom: 4px; }
+.judge-header p  { color: rgba(255,255,255,0.65); margin-bottom: 0; font-size: 14px; }
+.judge-scoreboard {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 12px 20px;
+  text-align: center;
+  min-width: 120px;
+}
+.judge-scoreboard .score-big { font-size: 32px; font-weight: 900; color: #E8392A; line-height: 1; }
+.judge-scoreboard .score-lbl { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+.judge-progress {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.judge-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid #E0E4E8;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #999;
+  transition: all 0.3s;
+}
+.judge-dot.active  { border-color: #E8392A; color: #E8392A; background: #FFF5F4; }
+.judge-dot.correct { border-color: #2E7D32; background: #2E7D32; color: #fff; }
+.judge-dot.wrong   { border-color: #C62828; background: #C62828; color: #fff; }
+
+/* Character card */
+.character-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  overflow: hidden;
+  margin-bottom: 20px;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.character-top {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+}
+
+.character-avatar {
+  width: 130px;
+  min-height: 160px;
+  background: linear-gradient(135deg, #F4F6F8, #E8ECF0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  flex-shrink: 0;
+  border-right: 1px solid #F0F0F0;
+}
+
+.avatar-figure {
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.avatar-name { font-size: 13px; font-weight: 700; color: #1A1A1A; text-align: center; }
+.avatar-role { font-size: 11px; color: #777; text-align: center; }
+
+.character-speech {
+  flex: 1;
+  padding: 24px;
+  position: relative;
+}
+
+.speech-category {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: #999;
+  background: #F4F6F8; border-radius: 4px; padding: 2px 8px;
+  margin-bottom: 12px;
+}
+
+.speech-bubble {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1A1A1A;
+  font-style: italic;
+  border-left: 3px solid #E8392A;
+  padding-left: 16px;
+}
+
+/* Verdict buttons */
+.verdict-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid #F0F0F0;
+}
+@media (max-width: 500px) { .verdict-row { grid-template-columns: 1fr; } }
+
+.verdict-btn {
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.verdict-btn:disabled { cursor: default; }
+.verdict-ok  { background: #E8F5E9; color: #2E7D32; border-right: 1px solid #F0F0F0; }
+.verdict-ok:hover:not(:disabled)  { background: #2E7D32; color: #fff; }
+.verdict-nok { background: #FFEBEE; color: #C62828; }
+.verdict-nok:hover:not(:disabled) { background: #C62828; color: #fff; }
+
+/* Feedback after verdict */
+.verdict-feedback {
+  display: none;
+  padding: 16px 24px;
+  border-top: 1px solid #F0F0F0;
+  font-size: 15px;
+  line-height: 1.6;
+  animation: fadeIn 0.3s ease;
+}
+.verdict-feedback.show { display: block; }
+.verdict-feedback.vf-correct { background: #E8F5E9; color: #1B5E20; }
+.verdict-feedback.vf-wrong   { background: #FFEBEE; color: #B71C1C; }
+
+/* ===== STAMP OVERLAY ===== */
+#stamp-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0);
+  z-index: 500;
+  pointer-events: none;
+  transition: background 0.2s;
+}
+#stamp-overlay.active {
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+#stamp-element {
+  opacity: 0;
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  padding: 16px 32px;
+  border: 8px solid;
+  border-radius: 4px;
+  transform: rotate(-12deg) scale(2.5);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s;
+  font-family: Arial Black, sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+#stamp-overlay.active #stamp-element {
+  opacity: 1;
+  transform: rotate(-12deg) scale(1);
+}
+#stamp-element.guilty { color: #C62828; border-color: #C62828; background: rgba(255,255,255,0.92); text-shadow: 2px 2px 0 rgba(198,40,40,0.2); }
+#stamp-element.ok-stamp { color: #2E7D32; border-color: #2E7D32; background: rgba(255,255,255,0.92); }
+#stamp-element.bonus-stamp { color: #E8392A; border-color: #E8392A; background: rgba(255,255,255,0.92); font-size: 40px; }
+
+/* Judge result */
+.judge-result-card { display: none; animation: fadeIn 0.4s ease; }
+.judge-result-card.visible { display: block; }
+.result-case-grid { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+.result-case-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; background: #F4F6F8; border-radius: 6px;
+}
+.result-icon { font-size: 18px; flex-shrink: 0; }
+.result-case-name { font-size: 14px; color: #555; flex: 1; }
+.result-case-verdict { font-size: 13px; font-weight: 700; }
+.result-case-verdict.correct { color: #2E7D32; }
+.result-case-verdict.wrong   { color: #C62828; }
+
+/* Combo indicator */
+.combo-flash {
+  position: fixed;
+  top: 80px; right: 20px;
+  background: #E8392A;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s;
+  z-index: 600;
+  pointer-events: none;
+}
+.combo-flash.show { opacity: 1; transform: translateY(0); }
+
+/* ===== CERTIFICATE ===== */
+.certificate-wrapper {
+  border: 3px solid #E8392A;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  margin-bottom: 24px;
+}
+.certificate-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid #FFDDD9;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.cert-logo-red { font-size: 42px; font-weight: 900; color: #E8392A; letter-spacing: -2px; line-height: 1; margin-bottom: 4px; }
+.cert-logo-bar { display: block; height: 4px; width: 48px; background: #E8392A; border-radius: 2px; margin: 0 auto 20px; }
+.cert-subtitle  { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 24px; }
+.cert-title     { font-size: 28px; font-weight: 900; color: #1A1A1A; margin-bottom: 16px; line-height: 1.2; }
+.cert-body      { font-size: 16px; color: #333; margin-bottom: 8px; }
+.cert-name      { font-size: 26px; font-weight: 700; color: #E8392A; margin: 12px 0; border-bottom: 2px solid #E8392A; display: inline-block; padding-bottom: 4px; min-width: 200px; }
+.cert-course    { font-size: 17px; font-style: italic; color: #333; margin: 12px 0; }
+.cert-divider   { height: 1px; background: #F0E8E6; margin: 20px auto; max-width: 300px; }
+.cert-result    { font-size: 15px; color: #555; margin-top: 8px; }
+
+/* ===== START SCREEN ===== */
+.start-hero {
+  text-align: center;
+  padding: 20px 0 32px;
+}
+.start-logo-big {
+  font-size: 80px; font-weight: 900; color: #E8392A;
+  letter-spacing: -5px; line-height: 1;
+  font-family: Arial Black, sans-serif;
+}
+.start-logo-bar { display: block; height: 6px; width: 80px; background: #E8392A; border-radius: 3px; margin: 6px auto 24px; }
+
+/* ===== UTILITIES ===== */
+.hidden { display: none; }
+.text-center { text-align: center; }
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-0  { margin-bottom: 0 !important; }
+.color-red  { color: #E8392A; }
+.color-ok   { color: #2E7D32; }
+.color-dark { color: #1A1A1A; }
+.no-print {}
+
+/* ===== PRINT ===== */
+@media print {
+  #app-header, #progress-section, .no-print, #stamp-overlay { display: none !important; }
+  body { background: #fff; }
+  .screen { display: none !important; }
+  #screen-cert { display: block !important; }
+  #main-content { padding: 0; max-width: 100%; }
+  .certificate-wrapper { border: 3px solid #E8392A; page-break-inside: avoid; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .card { padding: 20px; }
+  .character-top { flex-direction: column; }
+  .character-avatar { width: 100%; min-height: 100px; flex-direction: row; gap: 12px; padding: 12px 16px; }
+  .avatar-figure { font-size: 44px; margin-bottom: 0; }
+}
 </style>
 </head>
 <body>
 
+<!-- ===== STAMP OVERLAY ===== -->
+<div id="stamp-overlay">
+  <div id="stamp-element"></div>
+</div>
+
+<!-- ===== COMBO FLASH ===== -->
+<div class="combo-flash" id="combo-flash">🔥 Combo! +10 Bonus</div>
+
 <!-- ===== HEADER ===== -->
 <header id="app-header">
-  <div class="logo-block">
-    <div>
-      <span class="logo-text">SIX</span>
-      <span class="logo-bar" style="width:42px;"></span>
-    </div>
+  <div class="six-logo-wrap">
+    <!--
+      Ersetze diesen Block durch das offizielle SIX SVG-Logo:
+      <img src="six-logo.svg" class="six-logo-svg" alt="SIX Group">
+    -->
+    <svg class="six-logo-svg" viewBox="0 0 180 55" fill="#E8392A" xmlns="http://www.w3.org/2000/svg" aria-label="SIX Group">
+      <!-- S: flowing wave path -->
+      <path d="M6 36 Q6 48 18 48 L32 48 Q44 48 44 37 Q44 28 32 28 L18 28 Q6 28 6 18 Q6 7 18 7 L32 7 Q44 7 44 18"
+            stroke="#E8392A" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- I: vertical bar -->
+      <rect x="58" y="7" width="9" height="41" rx="2"/>
+      <!-- X: two crossing bars -->
+      <line x1="82" y1="7"  x2="120" y2="48" stroke="#E8392A" stroke-width="9" stroke-linecap="round"/>
+      <line x1="120" y1="7" x2="82"  y2="48" stroke="#E8392A" stroke-width="9" stroke-linecap="round"/>
+    </svg>
+    <div class="header-divider"></div>
+    <span class="header-subtitle">Compliance Schulung</span>
   </div>
-  <span class="header-title">Compliance Schulung</span>
+  <div class="header-score" id="header-score">
+    <span class="score-star">⭐</span>
+    <span id="header-score-val">0</span>
+    <span style="font-weight:400;color:#777;font-size:12px;">Punkte</span>
+  </div>
 </header>
 
 <!-- ===== PROGRESS BAR ===== -->
 <div id="progress-section">
-  <div class="progress-label">
+  <div class="progress-meta">
     <span id="progress-label-text">Schritt 1 von 7</span>
     <span id="progress-pct">14%</span>
   </div>
@@ -716,600 +709,544 @@
   </div>
 </div>
 
-<!-- ===== MAIN CONTENT ===== -->
+<!-- ===== MAIN ===== -->
 <main id="main-content">
 
-  <!-- ========== SCREEN 0: START ========== -->
-  <div class="screen active" id="screen-start">
-    <div class="start-logo-block">
-      <div class="start-logo-text">SIX</div>
-      <span class="start-logo-bar"></span>
-    </div>
+<!-- ============================================================
+     SCREEN 0 – START
+     ============================================================ -->
+<div class="screen active" id="screen-start">
+  <div class="start-hero">
+    <div class="start-logo-big">SIX</div>
+    <span class="start-logo-bar"></span>
+  </div>
 
-    <div class="card" style="text-align:center;">
-      <h1 style="font-size:26px;">Maintaining a Harassment-Free Workplace</h1>
-      <p class="subtitle" style="margin-bottom:4px;">Pflichtschulung für neue Mitarbeitende · SIX Group AG</p>
-      <div class="section-divider"></div>
-      <p style="max-width:560px;margin:0 auto 20px;">Willkommen bei SIX. Diese Schulung dauert ca. 25–35 Minuten. Du wirst durch verschiedene Situationen geführt und musst Entscheidungen treffen. Bitte nimm dir die Zeit – das Thema ist wichtig.</p>
+  <div class="card" style="text-align:center;">
+    <h1 style="font-size:24px;">Maintaining a Harassment-Free Workplace</h1>
+    <p class="subtitle" style="margin-bottom:4px;">Pflichtschulung für neue Mitarbeitende · SIX Group AG</p>
+    <div class="section-divider"></div>
+    <p style="max-width:540px;margin:0 auto 24px;">Willkommen bei SIX. Diese Schulung dauert ca. 25–35 Minuten. Du wirst durch echte Fallbeispiele geführt, triffst Entscheidungen und sammelst Punkte. Am Ende wartet der <strong>Judge Mode</strong>: Du urteilst über echte Fälle.</p>
 
-      <div style="max-width:420px;margin:0 auto;text-align:left;">
-        <div class="form-group">
-          <label for="input-name">Vollständiger Name *</label>
-          <input type="text" id="input-name" placeholder="Vorname Nachname" />
-        </div>
-        <div class="form-group">
-          <label for="input-email">E-Mail-Adresse *</label>
-          <input type="email" id="input-email" placeholder="vorname.nachname@six-group.com" />
-        </div>
-        <div id="start-error" class="hidden" style="color:#C62828;font-size:14px;margin-bottom:12px;">Bitte fülle alle Pflichtfelder aus.</div>
-        <button class="btn btn-primary" style="width:100%;font-size:16px;padding:14px;" onclick="startTraining()">Schulung starten →</button>
+    <div style="max-width:420px;margin:0 auto;text-align:left;">
+      <div class="form-group">
+        <label for="input-name">Vollständiger Name *</label>
+        <input type="text" id="input-name" placeholder="Vorname Nachname"/>
       </div>
+      <div class="form-group">
+        <label for="input-email">E-Mail-Adresse *</label>
+        <input type="email" id="input-email" placeholder="vorname.nachname@six-group.com"/>
+      </div>
+      <div id="start-error" class="hidden" style="color:#C62828;font-size:14px;margin-bottom:12px;">Bitte fülle alle Pflichtfelder aus.</div>
+      <button class="btn btn-primary" style="width:100%;font-size:16px;padding:14px;" onclick="startTraining()">Schulung starten →</button>
     </div>
   </div>
 
-  <!-- ========== SCREEN 1: PRETEST ========== -->
-  <div class="screen" id="screen-pretest">
-    <div class="card">
-      <div class="module-badge">Eingangstest</div>
-      <h2>Zuerst: Was weisst du schon?</h2>
-      <p class="subtitle">5 kurze Fragen. Deine Antworten bestimmen, wie viel Theorie du siehst.</p>
-    </div>
-
-    <div id="pretest-container" class="pretest-grid">
-      <!-- Questions rendered by JS -->
-    </div>
-
-    <div id="pretest-result" class="hidden">
-      <div class="card">
-        <div id="pretest-result-banner" class="result-banner pass">
-          <div class="result-score" id="pretest-score-display">4 / 5</div>
-          <div id="pretest-result-text">Du kennst die Grundlagen bereits gut.</div>
+  <div class="card" style="background:#1A1A1A;color:#fff;">
+    <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Was dich erwartet</div>
+        <div style="color:#fff;font-size:14px;line-height:1.7;">
+          4 Module · Theorie + Video + Szenario<br>
+          Adaptiver Vorwissenstest<br>
+          <span style="color:#E8392A;font-weight:700;">Judge Mode</span> – du urteilst über 8 Fälle<br>
+          Zertifikat bei Bestehen
         </div>
-        <div id="pretest-mode-text" class="info-box"></div>
-        <div class="nav-row mt-16">
-          <button class="btn btn-primary" onclick="goToScreen('screen-m1')">Weiter zur Schulung →</button>
+      </div>
+      <div style="flex:1;min-width:180px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Punkte sammeln</div>
+        <div style="color:#fff;font-size:14px;line-height:1.7;">
+          Richtige Antwort: <span style="color:#E8392A;font-weight:700;">+10 Punkte</span><br>
+          Richtige Entscheidung im Judge Mode: <span style="color:#E8392A;font-weight:700;">+20 Punkte</span><br>
+          Combo (3× in Folge): <span style="color:#E8392A;font-weight:700;">+10 Bonus</span>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="pretest-submit-row" class="nav-row">
-      <button class="btn btn-primary" id="btn-pretest-submit" onclick="submitPretest()" disabled>Auswertung anzeigen →</button>
-    </div>
+<!-- ============================================================
+     SCREEN 1 – EINGANGSTEST
+     ============================================================ -->
+<div class="screen" id="screen-pretest">
+  <div class="card">
+    <div class="module-badge">Eingangstest</div>
+    <h2>Zuerst: Was weisst du schon?</h2>
+    <p class="subtitle">5 kurze Fragen. Deine Antworten bestimmen, wie viel Theorie du siehst.</p>
   </div>
 
-  <!-- ========== SCREEN 2: MODUL 1 – MOBBING ========== -->
-  <div class="screen" id="screen-m1">
+  <div id="pretest-container"></div>
+
+  <div id="pretest-result" class="hidden">
     <div class="card">
-      <div class="module-badge">Modul 1</div>
-      <h2>Mobbing am Arbeitsplatz</h2>
-    </div>
-
-    <!-- Theory -->
-    <div class="card">
-      <h3>Was ist Mobbing?</h3>
-      <div class="theory-box" id="theory-m1">
-        <!-- filled by JS -->
+      <div id="pretest-result-banner" class="result-banner pass">
+        <div class="result-score" id="pretest-score-display">4 / 5</div>
+        <div id="pretest-result-text"></div>
       </div>
-    </div>
-
-    <!-- Scenario -->
-    <div class="card">
-      <h3>Szenario: Antonio</h3>
-      <div class="scenario-card">
-        <span class="scenario-label">Situation</span>
-        <span class="scenario-emoji">🧑‍💼</span>
-        <p>Antonio ist seit zwei Monaten dein neuer Vorgesetzter. Seitdem hat er dich Schritt für Schritt von Meetings ausgeschlossen und dir Aufgaben weggenommen, die du vorher hattest. Die Teamsitzung hat er auf Montagmorgen gelegt – deinen freien Tag, weil du 80% arbeitest. In den wenigen Sitzungen, zu denen du noch eingeladen bist, belächelt er deine Beiträge öffentlich.</p>
-      </div>
-
-      <p><strong>Was machst du?</strong></p>
-      <div class="answer-options" id="opts-m1">
-        <button class="answer-btn" onclick="selectAnswer('m1', 0, false)">A) Ich sage nichts. Vielleicht gibt es sich von selbst.</button>
-        <button class="answer-btn" onclick="selectAnswer('m1', 1, true)">B) Ich dokumentiere die Vorfälle und wende mich an HR.</button>
-        <button class="answer-btn" onclick="selectAnswer('m1', 2, false)">C) Ich konfrontiere Antonio direkt und lautstark vor dem Team.</button>
-      </div>
-
-      <div class="feedback-box" id="fb-m1"></div>
-
-      <div class="nav-row">
-        <button class="btn btn-primary" id="btn-m1-next" onclick="goToScreen('screen-m2')" disabled>Weiter →</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== SCREEN 3: MODUL 2 – SEXUELLE BELÄSTIGUNG ========== -->
-  <div class="screen" id="screen-m2">
-    <div class="card">
-      <div class="module-badge">Modul 2</div>
-      <h2>Sexuelle Belästigung</h2>
-    </div>
-
-    <!-- Theory -->
-    <div class="card">
-      <h3>Was ist sexuelle Belästigung?</h3>
-      <div class="theory-box" id="theory-m2"></div>
-    </div>
-
-    <!-- Scenario 1 -->
-    <div class="card">
-      <h3>Szenario 1: John und Susan</h3>
-      <div class="scenario-card">
-        <span class="scenario-label">Situation</span>
-        <span class="scenario-emoji">👩‍💼</span>
-        <p>Susan ist neu bei SIX. Beim ersten Meeting schaut sie Projektleiter John an. Er sagt zu ihr: «Oh, du trägst eine schöne Halskette – hast du dich heute extra für mich herausgeputzt?»</p>
-      </div>
-
-      <p><strong>Was denkst du über Johns Verhalten?</strong></p>
-      <div class="answer-options" id="opts-m2a">
-        <button class="answer-btn" onclick="selectAnswer('m2a', 0, false)">A) Es ist ein Kompliment. Das ist normal beim Smalltalk.</button>
-        <button class="answer-btn" onclick="selectAnswer('m2a', 1, true)">B) Es ist unangemessen. John hätte das nicht sagen sollen.</button>
-        <button class="answer-btn" onclick="selectAnswer('m2a', 2, false)">C) Das kommt auf den Ton an. Vielleicht meinte er es nett.</button>
-      </div>
-      <div class="feedback-box" id="fb-m2a"></div>
-    </div>
-
-    <!-- Scenario 2 -->
-    <div class="card">
-      <h3>Szenario 2: Max und Fabienne</h3>
-      <div class="scenario-card">
-        <span class="scenario-label">Situation</span>
-        <span class="scenario-emoji">👨‍💼</span>
-        <p>Max und Fabienne arbeiten im selben Team. Max macht Fabienne ständig Komplimente. Sie hat ihm klar gesagt, dass es sie stört. Max macht trotzdem weiter: «Gegen Komplimente kannst du gar nicht sein. Und schau, wie du dich kleidest – da musst du dich nicht wundern.»</p>
-      </div>
-
-      <p><strong>Was rätst du Fabienne?</strong></p>
-      <div class="answer-options" id="opts-m2b">
-        <button class="answer-btn" onclick="selectAnswer('m2b', 0, false)">A) Max hört auf, wenn sie es oft genug sagt.</button>
-        <button class="answer-btn" onclick="selectAnswer('m2b', 1, true)">B) Fabienne soll HR oder Compliance informieren und die Vorfälle dokumentieren.</button>
-        <button class="answer-btn" onclick="selectAnswer('m2b', 2, false)">C) Fabienne sollte die Kleidung ändern, dann hört es auf.</button>
-      </div>
-      <div class="feedback-box" id="fb-m2b"></div>
-
+      <div id="pretest-mode-text" class="info-box"></div>
       <div class="nav-row mt-16">
-        <button class="btn btn-primary" id="btn-m2-next" onclick="goToScreen('screen-m3')" disabled>Weiter →</button>
+        <button class="btn btn-primary" onclick="goToScreen('screen-m1')">Weiter zur Schulung →</button>
       </div>
     </div>
   </div>
 
-  <!-- ========== SCREEN 4: MODUL 3 – DISKRIMINIERUNG ========== -->
-  <div class="screen" id="screen-m3">
-    <div class="card">
-      <div class="module-badge">Modul 3</div>
-      <h2>Diskriminierung</h2>
+  <div id="pretest-submit-row" class="nav-row">
+    <button class="btn btn-primary" id="btn-pretest-submit" onclick="submitPretest()" disabled>Auswertung →</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 2 – MODUL 1: MOBBING
+     ============================================================ -->
+<div class="screen" id="screen-m1">
+  <div class="card">
+    <div class="module-badge">Modul 1 von 4</div>
+    <h2>Mobbing am Arbeitsplatz</h2>
+  </div>
+
+  <!-- Video placeholder -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:20px 24px 12px;border-bottom:1px solid #F0F0F0;">
+      <h3 style="margin-bottom:2px;">Video: Mobbing verstehen</h3>
+      <p style="font-size:13px;color:#777;margin-bottom:0;">Schau das Video an, bevor du weitergehst.</p>
     </div>
-
-    <!-- Theory -->
-    <div class="card">
-      <h3>Was ist Diskriminierung?</h3>
-      <div class="theory-box" id="theory-m3"></div>
-    </div>
-
-    <!-- Scenario -->
-    <div class="card">
-      <h3>Szenario: Fatimah und Francesca</h3>
-      <div class="scenario-card">
-        <span class="scenario-label">Situation</span>
-        <span class="scenario-emoji">👩‍💼</span>
-        <p>Fatimah ist neu im Team von Francesca. Im Frühling organisiert Francesca einen Grillabend für das Team. Fatimah wird nicht eingeladen. Als sie fragt warum, sagt Francesca: «Du bist Muslimin, und die Party ist während des Ramadans. Du darfst sowieso nichts essen oder trinken. Und wir trinken Wein und essen Schweinefleisch – das ist nichts für dich.»</p>
+    <div class="video-block" style="border-radius:0;margin-bottom:0;">
+      <!--
+        Video einbetten: Ersetze src="" mit dem tatsächlichen Dateipfad.
+        Dateiname je nach Modus:
+        • Kompakt:     mobbing-kompakt.mp4
+        • Standard:    mobbing-standard.mp4
+        • Vollständig: mobbing-vollstaendig.mp4
+        <video controls style="width:100%;" poster="">
+          <source src="mobbing-standard.mp4" type="video/mp4">
+        </video>
+      -->
+      <div class="video-poster" id="video-m1-poster">
+        <div class="video-title-txt">Mobbing am Arbeitsplatz</div>
+        <div class="play-btn-circle"><div class="play-icon"></div></div>
+        <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
-
-      <p><strong>Was denkst du über Francescas Verhalten?</strong></p>
-      <div class="answer-options" id="opts-m3">
-        <button class="answer-btn" onclick="selectAnswer('m3', 0, false)">A) Francesca meinte es gut – sie wollte Fatimah nicht in eine unangenehme Lage bringen.</button>
-        <button class="answer-btn" onclick="selectAnswer('m3', 1, true)">B) Das ist Diskriminierung. Fatimah hätte eingeladen werden müssen.</button>
-        <button class="answer-btn" onclick="selectAnswer('m3', 2, false)">C) Francesca hat Recht – es wäre für Fatimah ohnehin unangenehm gewesen.</button>
-      </div>
-      <div class="feedback-box" id="fb-m3"></div>
-
-      <div class="nav-row mt-16">
-        <button class="btn btn-primary" id="btn-m3-next" onclick="goToScreen('screen-m4')" disabled>Weiter →</button>
+      <div class="video-info-bar">
+        <span id="video-m1-duration">Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
+        <span class="video-filename" id="video-m1-file">mobbing-[modus].mp4</span>
       </div>
     </div>
   </div>
 
-  <!-- ========== SCREEN 5: MODUL 4 – MELDEWEGE ========== -->
-  <div class="screen" id="screen-m4">
-    <div class="card">
-      <div class="module-badge">Modul 4</div>
-      <h2>Was tun? Deine Optionen und Meldewege</h2>
-      <p class="subtitle">Wenn du etwas erlebst oder beobachtest – das sind deine Optionen.</p>
+  <!-- Theory -->
+  <div class="card">
+    <h3>Was ist Mobbing?</h3>
+    <div class="theory-box" id="theory-m1"></div>
+  </div>
+
+  <!-- Scenario -->
+  <div class="card">
+    <h3>Szenario: Antonio und Juan <span class="points-badge">+10 Punkte möglich</span></h3>
+    <div class="scenario-card">
+      <span class="scenario-label">Situation</span>
+      <span class="scenario-emoji">🧑‍💼</span>
+      <p>Antonio ist seit zwei Monaten Juans neuer Vorgesetzter. Seitdem hat er Juan nach und nach von Sitzungen ausgeschlossen und ihm Aufgaben entzogen. Die wöchentliche Teamsitzung hat er auf Montagmorgen gelegt – Juans freier Tag (80%-Pensum). In den wenigen Sitzungen, zu denen Juan noch eingeladen ist, belächelt Antonio seine Beiträge demonstrativ.</p>
     </div>
-
-    <div class="card">
-      <h3>Was beschreibt deine Situation am besten?</h3>
-      <div class="decision-btns">
-        <button class="decision-btn" id="btn-path-a" onclick="selectPath('a')">👤 Ich bin selbst betroffen.</button>
-        <button class="decision-btn" id="btn-path-b" onclick="selectPath('b')">👁️ Ich habe etwas beobachtet.</button>
-      </div>
-
-      <!-- Path A: Selbst betroffen -->
-      <div class="flow-path" id="path-a">
-        <h3 style="margin-bottom:16px;">Schritte wenn du selbst betroffen bist:</h3>
-        <div class="flow-step">
-          <div class="flow-number">1</div>
-          <div class="flow-content"><strong>Direkt ansprechen (wenn möglich und sicher)</strong><br>Wenn du dich sicher genug fühlst, sprich die Person an und mach klar, dass das Verhalten nicht in Ordnung ist.</div>
-        </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">
-          <div class="flow-number">2</div>
-          <div class="flow-content"><strong>Dokumentieren</strong><br>Notiere was passiert ist – mit Datum, Beschreibung, und wenn vorhanden: Namen von Zeugen. Das ist wichtig für eine Untersuchung.</div>
-        </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">
-          <div class="flow-number">3</div>
-          <div class="flow-content"><strong>Meldung erstatten</strong><br>Du kannst dich wenden an: Vorgesetzte/r · HR · Compliance</div>
-        </div>
-        <div class="contact-grid" style="margin-top:12px;">
-          <div class="contact-card"><div class="contact-label">Compliance Helpline</div><a href="mailto:compliance-helpline@six-group.com">compliance-helpline@six-group.com</a></div>
-          <div class="contact-card"><div class="contact-label">Misconduct Meldung</div><a href="mailto:misconduct@six-group.com">misconduct@six-group.com</a></div>
-          <div class="contact-card"><div class="contact-label">Anonyme Meldung</div><a href="#">i-connect Portal</a></div>
-        </div>
-        <div class="info-box"><strong>Wichtig:</strong> Du musst keine Konsequenzen befürchten, wenn du in gutem Glauben meldest. Vergeltungsmassnahmen sind ausdrücklich verboten.</div>
-      </div>
-
-      <!-- Path B: Beobachtet -->
-      <div class="flow-path" id="path-b">
-        <div class="warning-box"><strong>Schau nicht weg.</strong> Du kannst einen Unterschied machen.</div>
-        <h3 style="margin-bottom:16px;">Schritte wenn du etwas beobachtest:</h3>
-        <div class="flow-step">
-          <div class="flow-number">1</div>
-          <div class="flow-content"><strong>Betroffene Person ansprechen</strong><br>Frage sie direkt: «Bist du ok? Kann ich etwas für dich tun?» – das zeigt, dass sie nicht allein ist.</div>
-        </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">
-          <div class="flow-number">2</div>
-          <div class="flow-content"><strong>Meldung erstatten</strong><br>Wende dich an Vorgesetzte/r, HR oder Compliance – auch wenn die betroffene Person das selbst (noch) nicht tut.</div>
-        </div>
-        <div class="contact-grid" style="margin-top:12px;">
-          <div class="contact-card"><div class="contact-label">Compliance Helpline</div><a href="mailto:compliance-helpline@six-group.com">compliance-helpline@six-group.com</a></div>
-          <div class="contact-card"><div class="contact-label">Misconduct Meldung</div><a href="mailto:misconduct@six-group.com">misconduct@six-group.com</a></div>
-          <div class="contact-card"><div class="contact-label">Anonyme Meldung</div><a href="#">i-connect Portal</a></div>
-        </div>
-      </div>
+    <p><strong>Was rätst du Juan?</strong></p>
+    <div class="answer-options" id="opts-m1">
+      <button class="answer-btn" onclick="selectAnswer('m1', 0, false)">A) Abwarten. Vielleicht normalisiert sich das von selbst.</button>
+      <button class="answer-btn" onclick="selectAnswer('m1', 1, true)">B) Die Vorfälle dokumentieren und HR oder Compliance informieren.</button>
+      <button class="answer-btn" onclick="selectAnswer('m1', 2, false)">C) Antonio direkt und lautstark vor dem Team konfrontieren.</button>
     </div>
+    <div class="feedback-box" id="fb-m1"></div>
+    <div class="nav-row">
+      <button class="btn btn-primary" id="btn-m1-next" onclick="goToScreen('screen-m2')" disabled>Weiter →</button>
+    </div>
+  </div>
+</div>
 
-    <!-- Final Scenario -->
-    <div class="card">
-      <h3>Abschlussszenario: Chantale und der CEO</h3>
-      <div class="scenario-card">
-        <span class="scenario-label">Situation</span>
-        <span class="scenario-emoji">👩‍💼</span>
-        <p>Du bist Country Manager. Beim Kunden macht der CEO anzügliche Bemerkungen zu deiner Mitarbeiterin Chantale. Sie ist sichtlich unangenehm berührt, sagt aber nichts. Nächste Woche ist der nächste Termin mit diesem Kunden.</p>
+<!-- ============================================================
+     SCREEN 3 – MODUL 2: SEXUELLE BELÄSTIGUNG
+     ============================================================ -->
+<div class="screen" id="screen-m2">
+  <div class="card">
+    <div class="module-badge">Modul 2 von 4</div>
+    <h2>Sexuelle Belästigung</h2>
+  </div>
+
+  <!-- Video -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:20px 24px 12px;border-bottom:1px solid #F0F0F0;">
+      <h3 style="margin-bottom:2px;">Video: Sexuelle Belästigung</h3>
+      <p style="font-size:13px;color:#777;margin-bottom:0;">Zwei Formen, ein Grundsatz: Absicht ist irrelevant.</p>
+    </div>
+    <div class="video-block" style="border-radius:0;margin-bottom:0;">
+      <div class="video-poster">
+        <div class="video-title-txt">Sexuelle Belästigung am Arbeitsplatz</div>
+        <div class="play-btn-circle"><div class="play-icon"></div></div>
+        <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
-
-      <p><strong>Was machst du?</strong></p>
-      <div class="answer-options" id="opts-m4">
-        <button class="answer-btn" onclick="selectAnswer('m4', 0, false)">A) Nichts. Der Kunde ist wichtig für die Firma.</button>
-        <button class="answer-btn" onclick="selectAnswer('m4', 1, true)">B) Ich spreche Chantale an, frage wie es ihr geht, und informiere HR.</button>
-        <button class="answer-btn" onclick="selectAnswer('m4', 2, 'partial')">C) Ich sage beim nächsten Treffen kurz, dass das nicht in Ordnung war.</button>
-      </div>
-      <div class="feedback-box" id="fb-m4"></div>
-
-      <div class="nav-row mt-16">
-        <button class="btn btn-primary" id="btn-m4-next" onclick="goToScreen('screen-finaltest')" disabled>Zum Abschlusstest →</button>
+      <div class="video-info-bar">
+        <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
+        <span class="video-filename">belaestigung-[modus].mp4</span>
       </div>
     </div>
   </div>
 
-  <!-- ========== SCREEN 6: ABSCHLUSSTEST ========== -->
-  <div class="screen" id="screen-finaltest">
-    <div class="card">
-      <div class="module-badge">Abschlusstest</div>
-      <h2>Fast geschafft. Zeig was du weisst.</h2>
-      <p class="subtitle">10 Fragen. Du brauchst mindestens 8 von 10 richtig für dein Zertifikat.</p>
-    </div>
+  <!-- Theory -->
+  <div class="card">
+    <h3>Was ist sexuelle Belästigung?</h3>
+    <div class="theory-box" id="theory-m2"></div>
+  </div>
 
-    <div id="finaltest-container">
-      <!-- Rendered by JS -->
+  <!-- Scenario 1 -->
+  <div class="card">
+    <h3>Szenario 1: John und Susan <span class="points-badge">+10 Punkte möglich</span></h3>
+    <div class="scenario-card">
+      <span class="scenario-label">Situation</span>
+      <span class="scenario-emoji">👩‍💼</span>
+      <p>Susan ist neu bei SIX. Beim ersten Meeting schaut sie Projektleiter John an. Er sagt zu ihr: «Oh, du trägst eine schöne Halskette – hast du dich heute extra für mich herausgeputzt?»</p>
     </div>
+    <p><strong>Was denkst du über Johns Verhalten?</strong></p>
+    <div class="answer-options" id="opts-m2a">
+      <button class="answer-btn" onclick="selectAnswer('m2a', 0, false)">A) Ein harmloses Kompliment. Normal beim Smalltalk.</button>
+      <button class="answer-btn" onclick="selectAnswer('m2a', 1, true)">B) Unangemessen. John hätte das nicht sagen sollen.</button>
+      <button class="answer-btn" onclick="selectAnswer('m2a', 2, false)">C) Kommt auf den Ton an. Vielleicht meinte er es nett.</button>
+    </div>
+    <div class="feedback-box" id="fb-m2a"></div>
+  </div>
 
-    <div id="finaltest-result" class="hidden">
-      <div class="card">
-        <div id="finaltest-result-banner" class="result-banner">
-          <div class="result-score" id="finaltest-score-display"></div>
-          <div id="finaltest-result-text"></div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-primary" id="btn-final-pass" class="hidden" onclick="goToScreen('screen-cert')">Zum Zertifikat →</button>
-          <button class="btn btn-secondary" id="btn-final-retry" class="hidden" onclick="retryFinalTest()">Test wiederholen</button>
-        </div>
+  <!-- Scenario 2 -->
+  <div class="card">
+    <h3>Szenario 2: Max und Fabienne <span class="points-badge">+10 Punkte möglich</span></h3>
+    <div class="scenario-card">
+      <span class="scenario-label">Situation</span>
+      <span class="scenario-emoji">👨‍💼</span>
+      <p>Max macht Fabienne ständig Komplimente. Sie hat ihm klar gesagt, dass es sie stört. Max macht trotzdem weiter: «Gegen Komplimente kannst du gar nicht sein. Und schau wie du dich kleidest – da musst du dich nicht wundern.»</p>
+    </div>
+    <p><strong>Was rätst du Fabienne?</strong></p>
+    <div class="answer-options" id="opts-m2b">
+      <button class="answer-btn" onclick="selectAnswer('m2b', 0, false)">A) Weiter bitten, bis er aufhört.</button>
+      <button class="answer-btn" onclick="selectAnswer('m2b', 1, true)">B) HR oder Compliance informieren und Vorfälle dokumentieren.</button>
+      <button class="answer-btn" onclick="selectAnswer('m2b', 2, false)">C) Kleidung ändern, dann hört es auf.</button>
+    </div>
+    <div class="feedback-box" id="fb-m2b"></div>
+    <div class="nav-row mt-16">
+      <button class="btn btn-primary" id="btn-m2-next" onclick="goToScreen('screen-m3')" disabled>Weiter →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 4 – MODUL 3: DISKRIMINIERUNG
+     ============================================================ -->
+<div class="screen" id="screen-m3">
+  <div class="card">
+    <div class="module-badge">Modul 3 von 4</div>
+    <h2>Diskriminierung</h2>
+  </div>
+
+  <!-- Video -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:20px 24px 12px;border-bottom:1px solid #F0F0F0;">
+      <h3 style="margin-bottom:2px;">Video: Diskriminierung erkennen</h3>
+      <p style="font-size:13px;color:#777;margin-bottom:0;">Auch gut gemeinte Ausgrenzung ist Diskriminierung.</p>
+    </div>
+    <div class="video-block" style="border-radius:0;margin-bottom:0;">
+      <div class="video-poster">
+        <div class="video-title-txt">Diskriminierung am Arbeitsplatz</div>
+        <div class="play-btn-circle"><div class="play-icon"></div></div>
+        <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
-    </div>
-
-    <div id="finaltest-submit-row" class="nav-row">
-      <button class="btn btn-primary" id="btn-final-submit" onclick="submitFinalTest()" disabled>Auswertung anzeigen →</button>
+      <div class="video-info-bar">
+        <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
+        <span class="video-filename">diskriminierung-[modus].mp4</span>
+      </div>
     </div>
   </div>
 
-  <!-- ========== SCREEN 7: ZERTIFIKAT ========== -->
-  <div class="screen" id="screen-cert">
-    <div class="card" id="screen-cert-inner">
-      <div class="module-badge" style="background:#2E7D32;">✓ Abgeschlossen</div>
-      <h2>Herzlichen Glückwunsch!</h2>
-      <p style="color:#555;margin-bottom:24px;">Du hast die Pflichtschulung erfolgreich abgeschlossen.</p>
+  <!-- Theory -->
+  <div class="card">
+    <h3>Was ist Diskriminierung?</h3>
+    <div class="theory-box" id="theory-m3"></div>
+  </div>
 
-      <div class="certificate-wrapper" id="certificate-block">
-        <div class="cert-logo">SIX</div>
-        <span class="cert-logo-bar"></span>
-        <div class="cert-subtitle">SIX Group AG · Zürich</div>
+  <!-- Scenario -->
+  <div class="card">
+    <h3>Szenario: Fatimah und Francesca <span class="points-badge">+10 Punkte möglich</span></h3>
+    <div class="scenario-card">
+      <span class="scenario-label">Situation</span>
+      <span class="scenario-emoji">👩‍💼</span>
+      <p>Fatimah ist neu im Team von Francesca. Francesca organisiert einen Grillabend – und lädt Fatimah nicht ein. Auf Nachfrage sagt Francesca: «Du bist Muslimin, die Party ist während des Ramadans. Du darfst sowieso nichts essen oder trinken. Und wir trinken Wein und essen Schweinefleisch – das ist nichts für dich.»</p>
+    </div>
+    <p><strong>Was denkst du über Francescas Verhalten?</strong></p>
+    <div class="answer-options" id="opts-m3">
+      <button class="answer-btn" onclick="selectAnswer('m3', 0, false)">A) Francesca meinte es gut und wollte Fatimah schützen.</button>
+      <button class="answer-btn" onclick="selectAnswer('m3', 1, true)">B) Das ist Diskriminierung. Fatimah hätte eingeladen werden müssen.</button>
+      <button class="answer-btn" onclick="selectAnswer('m3', 2, false)">C) Francesca hat Recht – es wäre ohnehin unangenehm gewesen.</button>
+    </div>
+    <div class="feedback-box" id="fb-m3"></div>
+    <div class="nav-row mt-16">
+      <button class="btn btn-primary" id="btn-m3-next" onclick="goToScreen('screen-m4')" disabled>Weiter →</button>
+    </div>
+  </div>
+</div>
 
-        <div class="cert-title">ABSCHLUSSZERTIFIKAT</div>
+<!-- ============================================================
+     SCREEN 5 – MODUL 4: MELDEWEGE
+     ============================================================ -->
+<div class="screen" id="screen-m4">
+  <div class="card">
+    <div class="module-badge">Modul 4 von 4</div>
+    <h2>Was tun? Deine Optionen</h2>
+    <p class="subtitle">Wenn du etwas erlebst oder beobachtest.</p>
+  </div>
 
-        <div class="cert-body">Hiermit wird bestätigt, dass</div>
-        <div class="cert-name" id="cert-name-display">&nbsp;</div>
-
-        <div class="cert-body" style="margin-top:12px;">die Pflichtschulung</div>
-        <div class="cert-course">«Maintaining a Harassment-Free Workplace»</div>
-        <div class="cert-body">erfolgreich abgeschlossen hat.</div>
-
-        <div class="cert-divider"></div>
-
-        <div class="cert-result">
-          Ergebnis: <strong id="cert-score-display">–</strong> &nbsp;|&nbsp;
-          Datum: <strong id="cert-date-display">–</strong>
-        </div>
-        <div class="cert-result" style="margin-top:4px;">SIX Group AG · Compliance</div>
+  <!-- Video -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:20px 24px 12px;border-bottom:1px solid #F0F0F0;">
+      <h3 style="margin-bottom:2px;">Video: Meldewege bei SIX</h3>
+      <p style="font-size:13px;color:#777;margin-bottom:0;">Was tun – als Betroffene/r, Beobachter/in und Vorgesetzte/r.</p>
+    </div>
+    <div class="video-block" style="border-radius:0;margin-bottom:0;">
+      <div class="video-poster">
+        <div class="video-title-txt">Meldewege &amp; Führungsverantwortung</div>
+        <div class="play-btn-circle"><div class="play-icon"></div></div>
+        <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
-
-      <!-- Action buttons -->
-      <div class="nav-row no-print" style="justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
-        <button class="btn btn-primary" onclick="printCertificate()">📄 Zertifikat herunterladen (PDF)</button>
-        <button class="btn btn-secondary" onclick="emailCertificate()">✉️ Per E-Mail senden</button>
-      </div>
-
-      <div class="section-divider no-print"></div>
-
-      <!-- Contacts -->
-      <div class="no-print">
-        <h3 style="margin-bottom:12px;">Kontaktadressen bei Fragen oder Meldungen</h3>
-        <div class="contact-grid">
-          <div class="contact-card"><div class="contact-label">Compliance Helpline</div><a href="mailto:compliance-helpline@six-group.com">compliance-helpline@six-group.com</a></div>
-          <div class="contact-card"><div class="contact-label">Misconduct Meldung</div><a href="mailto:misconduct@six-group.com">misconduct@six-group.com</a></div>
-          <div class="contact-card"><div class="contact-label">Anonyme Meldung</div><a href="#">i-connect Portal</a></div>
-        </div>
-
-        <div class="card" style="background:#1B3A5C;color:#fff;text-align:center;margin-top:24px;">
-          <p style="color:#fff;font-size:17px;font-style:italic;margin-bottom:4px;">«Wenn sich etwas falsch anfühlt, ist es meistens auch so.»</p>
-          <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:0;">So, if you see something, say something.</p>
-        </div>
+      <div class="video-info-bar">
+        <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
+        <span class="video-filename">meldewege-[modus].mp4</span>
       </div>
     </div>
   </div>
+
+  <div class="card">
+    <h3>Was beschreibt deine Situation?</h3>
+    <div class="decision-btns">
+      <button class="decision-btn" id="btn-path-a" onclick="selectPath('a')">👤 Ich bin selbst betroffen</button>
+      <button class="decision-btn" id="btn-path-b" onclick="selectPath('b')">👁️ Ich habe etwas beobachtet</button>
+    </div>
+
+    <div class="flow-path" id="path-a">
+      <h3 style="margin-bottom:16px;color:#E8392A;">Als Betroffene/r:</h3>
+      <div class="flow-step"><div class="flow-number">1</div><div class="flow-content"><strong>Direkt ansprechen (wenn sicher)</strong><br>Kläre, dass das Verhalten unerwünscht ist – wenn du dich sicher genug fühlst.</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-number">2</div><div class="flow-content"><strong>Dokumentieren</strong><br>Notiere Datum, Beschreibung und allfällige Zeugen. Wichtig für eine Untersuchung.</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-number">3</div><div class="flow-content"><strong>Meldung erstatten</strong><br>Vorgesetzte/r · HR · Compliance</div></div>
+      <div class="contact-grid" style="margin-top:12px;">
+        <div class="contact-card"><div class="contact-label">Compliance</div><a href="mailto:compliance-helpline@six-group.com">compliance-helpline@six-group.com</a></div>
+        <div class="contact-card"><div class="contact-label">Misconduct</div><a href="mailto:misconduct@six-group.com">misconduct@six-group.com</a></div>
+        <div class="contact-card"><div class="contact-label">Anonym</div><a href="#">i-connect Portal</a></div>
+      </div>
+      <div class="info-box"><strong>Kein Nachteil:</strong> Niemand, der in gutem Glauben meldet, muss negative Konsequenzen befürchten.</div>
+    </div>
+
+    <div class="flow-path" id="path-b">
+      <div class="warning-box"><strong>Schau nicht weg.</strong> Du kannst einen Unterschied machen.</div>
+      <h3 style="margin-bottom:16px;color:#E8392A;">Als Beobachter/in:</h3>
+      <div class="flow-step"><div class="flow-number">1</div><div class="flow-content"><strong>Betroffene Person ansprechen</strong><br>«Bist du ok? Kann ich etwas für dich tun?»</div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-number">2</div><div class="flow-content"><strong>Meldung erstatten</strong><br>Vorgesetzte/r, HR oder Compliance – auch ohne explizite Bitte der betroffenen Person.</div></div>
+      <div class="contact-grid" style="margin-top:12px;">
+        <div class="contact-card"><div class="contact-label">Compliance</div><a href="mailto:compliance-helpline@six-group.com">compliance-helpline@six-group.com</a></div>
+        <div class="contact-card"><div class="contact-label">Misconduct</div><a href="mailto:misconduct@six-group.com">misconduct@six-group.com</a></div>
+        <div class="contact-card"><div class="contact-label">Anonym</div><a href="#">i-connect Portal</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final scenario -->
+  <div class="card">
+    <h3>Abschlussszenario: Chantale <span class="points-badge">+10 Punkte möglich</span></h3>
+    <div class="scenario-card">
+      <span class="scenario-label">Situation – Du bist Country Manager</span>
+      <span class="scenario-emoji">👩‍💼</span>
+      <p>Beim Kunden macht der CEO anzügliche Bemerkungen zu deiner Mitarbeiterin Chantale. Sie ist sichtlich unangenehm berührt, sagt aber nichts. Nächste Woche ist das nächste Treffen mit diesem Kunden.</p>
+    </div>
+    <p><strong>Was machst du?</strong></p>
+    <div class="answer-options" id="opts-m4">
+      <button class="answer-btn" onclick="selectAnswer('m4', 0, false)">A) Nichts tun. Der Kunde ist wichtig.</button>
+      <button class="answer-btn" onclick="selectAnswer('m4', 1, true)">B) Chantale ansprechen, fragen wie es ihr geht, und HR informieren.</button>
+      <button class="answer-btn" onclick="selectAnswer('m4', 2, 'partial')">C) Beim nächsten Treffen kurz sagen, dass das nicht in Ordnung war.</button>
+    </div>
+    <div class="feedback-box" id="fb-m4"></div>
+    <div class="nav-row mt-16">
+      <button class="btn btn-primary" id="btn-m4-next" onclick="goToScreen('screen-judge')" disabled>Zum Judge Mode →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 6 – JUDGE MODE
+     ============================================================ -->
+<div class="screen" id="screen-judge">
+
+  <!-- Header -->
+  <div class="judge-header">
+    <div>
+      <div class="module-badge dark" style="margin-bottom:8px;">Judge Mode</div>
+      <h2>Du bist der/die Richter/in.</h2>
+      <p>8 Personen kommen auf dich zu. Jede/r schildert eine Situation. Du entscheidest: <strong style="color:#E8392A;">Unzulässig</strong> oder <strong style="color:#4CAF50;">Zulässig</strong>.</p>
+    </div>
+    <div class="judge-scoreboard">
+      <div class="score-big" id="judge-score-display">0</div>
+      <div class="score-lbl">Punkte</div>
+    </div>
+  </div>
+
+  <!-- Case progress dots -->
+  <div class="judge-progress" id="judge-dots"></div>
+
+  <!-- Active character card -->
+  <div id="judge-case-container"></div>
+
+  <!-- Result screen -->
+  <div class="judge-result-card card" id="judge-result">
+    <div id="judge-result-banner" class="result-banner pass">
+      <div class="result-score" id="judge-result-score"></div>
+      <div id="judge-result-text"></div>
+    </div>
+    <div id="judge-case-summary" class="result-case-grid"></div>
+    <div class="nav-row mt-16">
+      <button class="btn btn-primary hidden" id="btn-judge-pass" onclick="goToScreen('screen-cert')">Zum Zertifikat →</button>
+      <button class="btn btn-secondary hidden" id="btn-judge-retry" onclick="retryJudge()">Nochmal versuchen</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     SCREEN 7 – ZERTIFIKAT
+     ============================================================ -->
+<div class="screen" id="screen-cert">
+  <div class="card">
+    <div class="module-badge green">✓ Abgeschlossen</div>
+    <h2>Herzlichen Glückwunsch!</h2>
+    <p style="color:#555;margin-bottom:24px;">Du hast die Pflichtschulung erfolgreich abgeschlossen.</p>
+
+    <div class="certificate-wrapper" id="certificate-block">
+      <div class="cert-logo-red">SIX</div>
+      <span class="cert-logo-bar"></span>
+      <div class="cert-subtitle">SIX Group AG · Zürich</div>
+      <div class="cert-title">ABSCHLUSSZERTIFIKAT</div>
+      <div class="cert-body">Hiermit wird bestätigt, dass</div>
+      <div class="cert-name" id="cert-name-display">&nbsp;</div>
+      <div class="cert-body" style="margin-top:12px;">die Pflichtschulung</div>
+      <div class="cert-course">«Maintaining a Harassment-Free Workplace»</div>
+      <div class="cert-body">erfolgreich abgeschlossen hat.</div>
+      <div class="cert-divider"></div>
+      <div class="cert-result">Gesamtpunktzahl: <strong id="cert-score-display">–</strong></div>
+      <div class="cert-result" style="margin-top:4px;">Datum: <strong id="cert-date-display">–</strong></div>
+      <div class="cert-result" style="margin-top:4px;">SIX Group AG · Compliance</div>
+    </div>
+
+    <div class="nav-row no-print" style="justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
+      <button class="btn btn-primary" onclick="printCertificate()">📄 Zertifikat (PDF)</button>
+      <button class="btn btn-secondary" onclick="emailCertificate()">✉️ Per E-Mail senden</button>
+    </div>
+
+    <div class="section-divider no-print"></div>
+
+    <div class="no-print">
+      <h3 style="margin-bottom:12px;">Kontakt bei Fragen oder Meldungen</h3>
+      <div class="contact-grid">
+        <div class="contact-card"><div class="contact-label">Compliance Helpline</div><a href="mailto:compliance-helpline@six-group.com">compliance-helpline@six-group.com</a></div>
+        <div class="contact-card"><div class="contact-label">Misconduct</div><a href="mailto:misconduct@six-group.com">misconduct@six-group.com</a></div>
+        <div class="contact-card"><div class="contact-label">Anonym</div><a href="#">i-connect Portal</a></div>
+      </div>
+      <div class="card" style="background:#1A1A1A;color:#fff;text-align:center;margin-top:24px;">
+        <p style="color:#fff;font-size:17px;font-style:italic;margin-bottom:4px;">«Wenn sich etwas falsch anfühlt, ist es meistens auch so.»</p>
+        <p style="color:rgba(255,255,255,0.55);font-size:13px;margin-bottom:0;">So, if you see something, say something.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 </main>
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ===================================================================
+     JAVASCRIPT
+     =================================================================== -->
 <script>
 // ============================================================
-// STATE
+// GLOBAL STATE
 // ============================================================
 const state = {
-  userName:   '',
-  userEmail:  '',
-  testModus:  'standard',   // 'vollstaendig' | 'standard' | 'kompakt'
-  pretestScore: 0,
-  finalScore:   0,
-  currentScreen: 'screen-start',
-  // Track which scenario answers have been given
-  answered: {
-    m1: false,
-    m2a: false,
-    m2b: false,
-    m3: false,
-    m4: false
-  },
-  // Track final test answers
-  finalAnswers: []
+  userName:    '',
+  userEmail:   '',
+  testModus:   'standard',
+  totalScore:  0,   // accumulated throughout training
+  answered: { m1:false, m2a:false, m2b:false, m3:false, m4:false }
 };
 
 // ============================================================
-// QUESTION POOLS
+// PRETEST POOL (10 questions, pick 5 randomly)
 // ============================================================
 const pretestPool = [
-  {
-    id:'F1',
-    q:'Was versteht man unter sexueller Belästigung am Arbeitsplatz?',
-    opts:[
-      'Nur körperlicher Kontakt gegen den Willen der Person',
-      'Jedes unerwünschte Verhalten sexueller Natur, unabhängig von der Absicht',
-      'Nur Handlungen von Vorgesetzten gegenüber Untergebenen',
-      'Verhalten, das strafrechtlich verfolgt wird'
-    ],
-    correct: 1
-  },
-  {
-    id:'F2',
-    q:'Was ist Mobbing?',
-    opts:[
-      'Ein einmaliger Konflikt zwischen zwei Personen',
-      'Systematische, wiederholte Schikanierung über einen längeren Zeitraum',
-      'Lautstarke Auseinandersetzungen am Arbeitsplatz',
-      'Jede Form von Kritik durch Vorgesetzte'
-    ],
-    correct: 1
-  },
-  {
-    id:'F3',
-    q:'Was ist bei einer Meldung von Fehlverhalten bei SIX zu beachten?',
-    opts:[
-      'Man muss beweisen können, dass etwas passiert ist',
-      'Nur Vorgesetzte dürfen Meldungen machen',
-      'Niemand, der in gutem Glauben meldet, muss negative Konsequenzen befürchten',
-      'Meldungen sind nur anonym möglich'
-    ],
-    correct: 2
-  },
-  {
-    id:'F4',
-    q:'Entscheidend bei sexueller Belästigung ist...',
-    opts:[
-      'Die Absicht der handelnden Person',
-      'Wie die betroffene Person das Verhalten wahrnimmt',
-      'Ob ein Zeuge anwesend war',
-      'Der Hierarchieunterschied zwischen den Personen'
-    ],
-    correct: 1
-  },
-  {
-    id:'F5',
-    q:'Welches Verhalten ist ein Beispiel für Diskriminierung?',
-    opts:[
-      'Ein Mitarbeitender wird wegen schlechter Leistung gerügt',
-      'Jemand wird aufgrund seiner Religion von einem Teamanlass ausgeschlossen',
-      'Jemand bekommt keine Beförderung wegen mangelnder Erfahrung',
-      'Ein Meeting wird auf Englisch abgehalten'
-    ],
-    correct: 1
-  },
-  {
-    id:'F6',
-    q:'Was ist "Quid pro quo"-Belästigung?',
-    opts:[
-      'Belästigung durch Drittparteien ausserhalb der Firma',
-      'Belästigung, bei der sexuelle Gefälligkeiten als Gegenleistung für berufliche Vorteile gefordert werden',
-      'Diskriminierung aufgrund des Alters',
-      'Mobbing durch Arbeitskolleginnen und -kollegen'
-    ],
-    correct: 1
-  },
-  {
-    id:'F7',
-    q:'Welche Aussage über Diskriminierung stimmt?',
-    opts:[
-      'Nur absichtliche Benachteiligung gilt als Diskriminierung',
-      'Diskriminierung bezieht sich nur auf Geschlecht und Herkunft',
-      'Diskriminierung kann aufgrund von Religion, Herkunft, Alter, sexueller Orientierung und anderen Merkmalen erfolgen',
-      'Diskriminierung ist nur strafbar, wenn sie öffentlich passiert'
-    ],
-    correct: 2
-  },
-  {
-    id:'F8',
-    q:'Was sollte man tun, wenn man Fehlverhalten beobachtet?',
-    opts:[
-      'Abwarten und schauen, ob es sich von selbst löst',
-      'Nur einschreiten, wenn man selbst betroffen ist',
-      'Das Fehlverhalten ansprechen oder melden',
-      'Den Vorfall für sich behalten, um Konflikte zu vermeiden'
-    ],
-    correct: 2
-  },
-  {
-    id:'F9',
-    q:'An wen kann man sich bei SIX wenden, wenn man Belästigung erlebt?',
-    opts:[
-      'Nur an den direkten Vorgesetzten',
-      'An Vorgesetzte, HR, Compliance oder die anonyme Meldeplattform',
-      'Nur an die Compliance-Abteilung',
-      'An niemanden, das ist Privatsache'
-    ],
-    correct: 1
-  },
-  {
-    id:'F10',
-    q:'Was kennzeichnet ein "feindseliges Arbeitsumfeld"?',
-    opts:[
-      'Nur körperliche Übergriffe am Arbeitsplatz',
-      'Ein toxisches Umfeld mit sexistischen Bemerkungen, Witzen oder unerwünschten Berührungen',
-      'Jeder Konflikt im Team',
-      'Kritik in Mitarbeitergesprächen'
-    ],
-    correct: 1
-  }
+  { q:'Was versteht man unter sexueller Belästigung am Arbeitsplatz?',
+    opts:['Nur körperlicher Kontakt gegen den Willen der Person','Jedes unerwünschte Verhalten sexueller Natur, unabhängig von der Absicht','Nur Handlungen von Vorgesetzten gegenüber Untergebenen','Verhalten, das strafrechtlich verfolgt wird'], correct:1 },
+  { q:'Was ist Mobbing?',
+    opts:['Ein einmaliger Konflikt zwischen zwei Personen','Systematische, wiederholte Schikanierung über einen längeren Zeitraum','Lautstarke Auseinandersetzungen am Arbeitsplatz','Jede Form von Kritik durch Vorgesetzte'], correct:1 },
+  { q:'Was ist bei einer Meldung von Fehlverhalten bei SIX zu beachten?',
+    opts:['Man muss beweisen können, dass etwas passiert ist','Nur Vorgesetzte dürfen Meldungen machen','Niemand, der in gutem Glauben meldet, muss negative Konsequenzen befürchten','Meldungen sind nur anonym möglich'], correct:2 },
+  { q:'Entscheidend bei sexueller Belästigung ist...',
+    opts:['Die Absicht der handelnden Person','Wie die betroffene Person das Verhalten wahrnimmt','Ob ein Zeuge anwesend war','Der Hierarchieunterschied zwischen den Personen'], correct:1 },
+  { q:'Welches Verhalten ist ein Beispiel für Diskriminierung?',
+    opts:['Ein Mitarbeitender wird wegen schlechter Leistung gerügt','Jemand wird aufgrund seiner Religion von einem Teamanlass ausgeschlossen','Jemand bekommt keine Beförderung wegen mangelnder Erfahrung','Ein Meeting wird auf Englisch abgehalten'], correct:1 },
+  { q:'Was ist "Quid pro quo"-Belästigung?',
+    opts:['Belästigung durch Drittparteien ausserhalb der Firma','Belästigung, bei der sexuelle Gefälligkeiten als Gegenleistung für Vorteile gefordert werden','Diskriminierung aufgrund des Alters','Mobbing durch Arbeitskolleginnen und -kollegen'], correct:1 },
+  { q:'Welche Aussage über Diskriminierung stimmt?',
+    opts:['Nur absichtliche Benachteiligung gilt als Diskriminierung','Diskriminierung bezieht sich nur auf Geschlecht und Herkunft','Diskriminierung kann aufgrund von Religion, Herkunft, Alter, sexueller Orientierung und anderen Merkmalen erfolgen','Diskriminierung ist nur strafbar, wenn sie öffentlich passiert'], correct:2 },
+  { q:'Was sollte man tun, wenn man Fehlverhalten beobachtet?',
+    opts:['Abwarten und schauen, ob es sich von selbst löst','Nur einschreiten, wenn man selbst betroffen ist','Das Fehlverhalten ansprechen oder melden','Den Vorfall für sich behalten'], correct:2 },
+  { q:'An wen kann man sich bei SIX wenden, wenn man Belästigung erlebt?',
+    opts:['Nur an den direkten Vorgesetzten','An Vorgesetzte, HR, Compliance oder die anonyme Meldeplattform','Nur an die Compliance-Abteilung','An niemanden, das ist Privatsache'], correct:1 },
+  { q:'Was kennzeichnet ein "feindseliges Arbeitsumfeld"?',
+    opts:['Nur körperliche Übergriffe am Arbeitsplatz','Ein toxisches Umfeld mit sexistischen Bemerkungen, Witzen oder unerwünschten Berührungen','Jeder Konflikt im Team','Kritik in Mitarbeitergesprächen'], correct:1 }
 ];
 
-// Always 5 randomly chosen from the pool
 let pretestQuestions = [];
-let pretestUserAnswers = {}; // questionIndex -> chosen option index
-
-// Final test questions (fixed order)
-const finalQuestions = [
-  {
-    q:'Was ist entscheidend dafür, ob ein Verhalten als sexuelle Belästigung gilt?',
-    opts:['Die Absicht der handelnden Person','Die Wahrnehmung der betroffenen Person','Die Hierarchie zwischen den Personen','Ob ein Zeuge anwesend war'],
-    correct:1
-  },
-  {
-    q:'Was unterscheidet Mobbing von einem normalen Konflikt?',
-    opts:['Mobbing passiert nur zwischen Vorgesetzten und Untergebenen','Mobbing ist systematisch und wiederholt über einen längeren Zeitraum','Mobbing muss öffentlich stattfinden','Mobbing erfordert körperliche Handlungen'],
-    correct:1
-  },
-  {
-    q:'Fatimah wird wegen ihrer Religion von einem Teamanlass ausgeschlossen. Was ist das?',
-    opts:['Eine gut gemeinte Geste','Diskriminierung','Nur ein Missverständnis','Persönliche Entscheidung der Organisatorin'],
-    correct:1
-  },
-  {
-    q:'Was bedeutet "Quid pro quo"-Belästigung?',
-    opts:['Belästigung durch anonyme Personen','Sexuelle Gefälligkeiten als Gegenleistung für berufliche Vorteile','Kollektives Mobbing im Team','Diskriminierung aufgrund des Alters'],
-    correct:1
-  },
-  {
-    q:'Jemand meldet ein Fehlverhalten in gutem Glauben. Was darf er/sie erwarten?',
-    opts:['Muss mit Konsequenzen rechnen','Wird vom Team gemieden','Ist vor negativen Folgen geschützt','Muss die Vorwürfe beweisen'],
-    correct:2
-  },
-  {
-    q:'An wen kann man sich bei SIX wenden, wenn man Belästigung erlebt?',
-    opts:['Nur an den direkten Vorgesetzten','An Vorgesetzte, HR, Compliance oder die anonyme Meldeplattform','Nur anonym über i-connect','Niemanden, das ist Privatsache'],
-    correct:1
-  },
-  {
-    q:'Vorgesetzte/r Georg schreit alle Mitarbeitenden regelmässig an. Was trifft zu?',
-    opts:['Ist ok, die Arbeitswelt ist hart','Ist Diskriminierung, weil er alle gleich behandelt','Ist inakzeptables Verhalten – auch wenn alle gleichermassen betroffen sind','Ist nur ein Problem, wenn es öffentlich passiert'],
-    correct:2
-  },
-  {
-    q:'Max macht Fabienne weiter Komplimente, obwohl sie ihn gebeten hat aufzuhören. Was soll Fabienne tun?',
-    opts:['Weiter bitten, bis er aufhört','HR oder Compliance informieren und Vorfälle dokumentieren','Kleidung ändern','Das Team informieren'],
-    correct:1
-  },
-  {
-    q:'Was ist ein Merkmal eines feindseligen Arbeitsumfelds?',
-    opts:['Jeder Konflikt im Team','Strenge Leistungsanforderungen','Sexistische Witze, anzügliche Bemerkungen oder unerwünschte Berührungen','Kritische Feedbackgespräche'],
-    correct:2
-  },
-  {
-    q:'Was sollte man tun, wenn man beobachtet, wie ein Teammitglied systematisch ausgegrenzt wird?',
-    opts:['Abwarten','Nur einschreiten, wenn man direkt angesprochen wird','Das Verhalten ansprechen oder melden','Das ist Sache der Führungskraft'],
-    correct:2
-  }
-];
-
-let finalUserAnswers = {}; // questionIndex -> chosen option index
+let pretestUserAnswers = {};
 
 // ============================================================
-// THEORY CONTENT per Modus
+// THEORY CONTENT (adaptive)
 // ============================================================
 const theory = {
   m1: {
     vollstaendig: `<p>Mobbing bedeutet: Eine Person wird am Arbeitsplatz <strong>systematisch und wiederholt</strong> schikaniert, ausgegrenzt oder unter Druck gesetzt – über einen längeren Zeitraum.</p>
-<p>Das Ziel oder Resultat von Mobbing ist die Isolation der betroffenen Person. Typische Beispiele: Jemand wird von Pausen oder Meetings ausgeschlossen, lächerlich gemacht, seine Arbeit wird sabotiert, oder er wird angeschrien.</p>
-<p>Wichtig: Mobbing ist nicht ein einmaliger schlechter Tag oder ein einzelner Konflikt. Es ist das <strong>Muster</strong>, das zählt – wiederholt, systematisch, über Wochen oder Monate.</p>
+<p>Das Ziel oder Resultat von Mobbing ist die Isolation der betroffenen Person: <em>«Ich werde ihn dazu bringen, die Firma zu verlassen!»</em></p>
+<p>Typische Formen:</p>
+<ul>
+  <li>Gesprächsverweigerung, Kontaktvermeidung, Ausschluss von Gruppenveranstaltungen</li>
+  <li>Bloßstellungen, Verspottung, lächerlich machen, Verleumdung, Drohungen</li>
+  <li>Absichtliches Zurückhalten arbeitsnotwendiger Informationen</li>
+  <li>Zuteilung sinnloser oder kränkender Aufgaben – oder gar keine Aufgaben mehr</li>
+  <li>Übermäßig aggressives Verhalten, Anschreien</li>
+</ul>
+<p>Wichtig: Mobbing ist nicht ein einmaliger schlechter Tag. Es ist das <strong>Muster</strong> – wiederholt, systematisch, über Wochen oder Monate.</p>
 <p style="margin-bottom:0;"><strong>Bei SIX gilt:</strong> Wer Mobbing beobachtet, schaut nicht weg.</p>`,
-    standard: `<p>Mobbing ist systematische, wiederholte Schikanierung am Arbeitsplatz. Es geht nicht um Einzelvorfälle, sondern um ein <strong>Muster über Zeit</strong>.</p>
-<p style="margin-bottom:0;">Typisch: Ausgrenzung, Anschreien, Sabotage der Arbeit. <strong>Bei SIX gilt: nicht wegschauen.</strong></p>`,
-    kompakt: `<p style="margin-bottom:0;"><strong>Mobbing = systematische Schikanierung über Zeit.</strong> Nicht Einzelvorfälle. Bei SIX: nicht wegschauen.</p>`
+    standard: `<p>Mobbing ist systematische, wiederholte Schikanierung am Arbeitsplatz. Es geht nicht um Einzelvorfälle, sondern um ein <strong>Muster über Zeit</strong>. Das Ziel: die betroffene Person isolieren und ausgrenzen.</p>
+<p>Typisch: Ausgrenzung von Sitzungen, Aufgaben entziehen, lächerlich machen, Informationen zurückhalten, anschreien.</p>
+<p style="margin-bottom:0;"><strong>Bei SIX gilt: nicht wegschauen.</strong></p>`,
+    kompakt: `<p style="margin-bottom:0;"><strong>Mobbing = systematische Schikanierung über Zeit.</strong> Nicht Einzelvorfälle – das Muster zählt. Ausgrenzung, Sabotage, Anschreien, Demütigung. Bei SIX: nicht wegschauen.</p>`
   },
   m2: {
     vollstaendig: `<p>Sexuelle Belästigung umfasst alle Bemerkungen oder Handlungen sexueller Natur, die von der betroffenen Person <strong>nicht gewünscht werden</strong>.</p>
-<p>Es gibt zwei Hauptformen:</p>
+<p><strong>Zwei Hauptformen:</strong></p>
 <ul>
-  <li><strong>Quid pro quo:</strong> «Wenn du das machst, kriegst du das.» – z.B. Beförderung gegen sexuelle Gefälligkeiten.</li>
-  <li><strong>Feindseliges Arbeitsumfeld:</strong> Sexistische Witze, anzügliche Bemerkungen, unerwünschte Berührungen, Anstarren.</li>
+  <li><strong>Quid pro quo:</strong> «Wenn du das machst, kriegst du das.» – z.B. Beförderung gegen sexuelle Gefälligkeiten. Typischerweise durch Vorgesetzte.</li>
+  <li><strong>Feindseliges Arbeitsumfeld:</strong> Sexistische Witze, anzügliche Bemerkungen, unerwünschte Berührungen, Anstarren, Pfeifen, Pornografie zeigen.</li>
 </ul>
 <p>Entscheidend ist <strong>nicht die Absicht</strong> der handelnden Person – sondern wie die betroffene Person das Verhalten wahrnimmt. Auch Kolleginnen und Kollegen auf derselben Hierarchiestufe können belästigen.</p>
 <p style="margin-bottom:0;"><strong>Bei SIX gilt:</strong> Jeder Fall ist einer zu viel.</p>`,
-    standard: `<p>Sexuelle Belästigung = unerwünschtes Verhalten sexueller Natur. Zwei Formen: <strong>Quid pro quo</strong> (Leistung gegen Gefallen) und <strong>feindseliges Arbeitsumfeld</strong> (Witze, Berührungen, Bemerkungen).</p>
-<p style="margin-bottom:0;">Die Absicht zählt nicht – was zählt, ist die <strong>Wahrnehmung der betroffenen Person</strong>.</p>`,
-    kompakt: `<p style="margin-bottom:0;"><strong>Sexuelle Belästigung:</strong> unerwünscht, Absicht irrelevant. Quid pro quo oder feindseliges Umfeld. Beides nicht toleriert.</p>`
+    standard: `<p>Sexuelle Belästigung = unerwünschtes Verhalten sexueller Natur. Zwei Formen: <strong>Quid pro quo</strong> (Gegenleistung für Gefallen) und <strong>feindseliges Arbeitsumfeld</strong> (Witze, Berührungen, Bemerkungen).</p>
+<p style="margin-bottom:0;">Die <strong>Absicht zählt nicht</strong> – entscheidend ist die Wahrnehmung der betroffenen Person.</p>`,
+    kompakt: `<p style="margin-bottom:0;"><strong>Sexuelle Belästigung:</strong> unerwünscht, Absicht irrelevant. Quid pro quo oder feindseliges Umfeld. Jeder Fall ist einer zu viel.</p>`
   },
   m3: {
-    vollstaendig: `<p>Diskriminierung bedeutet: Eine Person wird aufgrund von Merkmalen wie <strong>Geschlecht, Alter, Herkunft, Religion, sexueller Orientierung oder Behinderung</strong> benachteiligt oder herabgesetzt.</p>
+    vollstaendig: `<p>Diskriminierung bedeutet: Eine Person wird aufgrund von Merkmalen wie <strong>Geschlecht, Alter, Herkunft, Sprache, Religion, sexueller Orientierung, Behinderung oder politischer Überzeugung</strong> benachteiligt oder herabgesetzt.</p>
 <p>Diskriminierung muss nicht laut oder offensichtlich sein. Auch subtile Ausgrenzung – wie das Nicht-Einladen zu einem Teamanlass wegen der Religion – ist Diskriminierung.</p>
-<p style="margin-bottom:0;"><strong>Bei SIX gilt:</strong> Wir missbrauchen keine Machtstellung und üben keine Vergeltungsmassnahmen gegen Personen aus, die in gutem Glauben eine Meldung machen.</p>`,
-    standard: `<p>Diskriminierung = Benachteiligung aufgrund von Geschlecht, Alter, Religion, Herkunft, sexueller Orientierung u.a. Auch <strong>subtile Formen</strong> zählen.</p>
-<p style="margin-bottom:0;">Machtmissbrauch ist nicht akzeptiert.</p>`,
-    kompakt: `<p style="margin-bottom:0;"><strong>Diskriminierung:</strong> Benachteiligung wegen persönlicher Merkmale. Gilt auch für subtile Formen.</p>`
+<p>Achtung: Es ist nicht relevant, ob die Absicht gut war. Auch «gut gemeinte» Ausgrenzung bleibt Diskriminierung, wenn sie auf persönlichen Merkmalen basiert.</p>
+<p style="margin-bottom:0;"><strong>Bei SIX gilt:</strong> Machtstellung nicht missbrauchen. Keine Vergeltung gegen Meldende.</p>`,
+    standard: `<p>Diskriminierung = Benachteiligung aufgrund von Geschlecht, Alter, Religion, Herkunft, sexueller Orientierung u.a. Auch <strong>subtile Formen und gut gemeinte Ausgrenzung</strong> zählen dazu.</p>
+<p style="margin-bottom:0;">Die Entscheidung, ob jemand teilnehmen will, liegt immer bei der betroffenen Person selbst.</p>`,
+    kompakt: `<p style="margin-bottom:0;"><strong>Diskriminierung:</strong> Benachteiligung wegen persönlicher Merkmale – auch subtil und gut gemeint. Die Entscheidung liegt bei der betroffenen Person.</p>`
   }
 };
 
@@ -1318,37 +1255,113 @@ const theory = {
 // ============================================================
 const feedback = {
   m1: [
-    { type: 'wrong',   text: 'Das ist verständlich – aber Mobbing löst sich selten von selbst. Je länger du wartest, desto schwieriger wird es. Dokumentiere, was passiert, und sprich jemanden an.' },
-    { type: 'correct', text: '✓ Genau richtig. Notizen mit Datum und Beschreibung sind wichtig für eine mögliche Untersuchung. HR und Compliance sind da, um zu helfen – ohne dass du Nachteile befürchten musst.' },
-    { type: 'wrong',   text: 'Ein direktes Gespräch kann sinnvoll sein – aber lautstark vor dem Team erhöht den Konflikt. Suche zuerst das Vier-Augen-Gespräch oder hol dir Unterstützung bei HR.' }
+    { type:'wrong',   text:'Mobbing löst sich selten von selbst. Je länger Juan wartet, desto schwieriger wird es. Dokumentieren und HR/Compliance einschalten ist der richtige Weg.' },
+    { type:'correct', text:'✓ Genau richtig. Schriftliche Notizen mit Datum und Beschreibung sind wichtig für eine mögliche Untersuchung. HR und Compliance sind da, um zu helfen – ohne Nachteile für Juan.' },
+    { type:'wrong',   text:'Ein direktes Gespräch kann sinnvoll sein – aber lautstark vor dem Team erhöht den Konflikt und schwächt Juans Position. Besser: Vier-Augen-Gespräch oder HR hinzuziehen.' }
   ],
   m2a: [
-    { type: 'wrong',   text: 'Nein. Der Kommentar ist personal, anzüglich und unangemessen – besonders bei einer ersten Begegnung in einem beruflichen Kontext. Susan kann das als belästigend empfinden, auch wenn John das nicht so meinte.' },
-    { type: 'correct', text: '✓ Richtig. Auch wenn John es vielleicht harmlos meinte – entscheidend ist, wie Susan das Verhalten wahrnimmt. In einem professionellen Erstgespräch haben solche Kommentare keinen Platz.' },
-    { type: 'wrong',   text: 'Die Absicht spielt keine entscheidende Rolle. Bei sexueller Belästigung gilt: Was zählt, ist die Wirkung auf die betroffene Person, nicht der Tonfall.' }
+    { type:'wrong',   text:'Nein. Der Kommentar ist anzüglich und unangemessen – besonders in einer ersten Begegnung im beruflichen Kontext. Susan kann das als belästigend empfinden, auch wenn John das nicht so meinte.' },
+    { type:'correct', text:'✓ Richtig. Auch wenn John es harmlos meinte – entscheidend ist die Wahrnehmung. In einem professionellen Erstgespräch haben solche Kommentare keinen Platz.' },
+    { type:'wrong',   text:'Die Absicht und der Ton spielen keine entscheidende Rolle. Was zählt, ist die Wirkung auf Susan – nicht Johns Tonfall.' }
   ],
   m2b: [
-    { type: 'wrong',   text: 'Fabienne hat es bereits klar gesagt – und Max macht weiter. Dieses Verhalten ist sexuelle Belästigung. Das weitere Abwarten bringt nichts.' },
-    { type: 'correct', text: '✓ Genau. Fabienne hat ihren Teil getan – sie hat Max klar kommuniziert, dass das Verhalten unerwünscht ist. Jetzt ist HR oder Compliance der richtige nächste Schritt. Sie muss keine Konsequenzen befürchten.' },
-    { type: 'wrong',   text: 'Nein. Die Kleidung einer Person rechtfertigt kein belästigendes Verhalten. Nie. Die Verantwortung liegt vollständig bei Max.' }
+    { type:'wrong',   text:'Fabienne hat es bereits klar gesagt – und Max macht trotzdem weiter. Weiteres Bitten bringt in diesem Fall nichts mehr.' },
+    { type:'correct', text:'✓ Genau. Fabienne hat ihre Kommunikation gemacht. Jetzt ist HR oder Compliance der richtige nächste Schritt. Sie muss keine Nachteile befürchten.' },
+    { type:'wrong',   text:'Nein. Die Kleidung einer Person rechtfertigt niemals belästigendes Verhalten. Die Verantwortung liegt vollständig bei Max.' }
   ],
   m3: [
-    { type: 'wrong',   text: 'Gute Absichten ändern nichts daran, dass Fatimah aufgrund ihrer Religion ausgeschlossen wurde. Es wäre Fatimahs Entscheidung gewesen, ob sie teilnehmen möchte oder nicht. Das ist Diskriminierung.' },
-    { type: 'correct', text: '✓ Richtig. Fatimah wurde aufgrund ihrer Religion ausgeschlossen – das ist eine klare Diskriminierung. Ob sie letztlich teilgenommen hätte, spielt keine Rolle. Die Einladung war ihr Recht.' },
-    { type: 'wrong',   text: 'Nein. Das entscheidet nicht Francesca. Jede Person hat das Recht, selbst zu entscheiden, ob und wie sie an sozialen Anlässen teilnehmen möchte.' }
+    { type:'wrong',   text:'Gute Absichten schützen nicht vor Diskriminierung. Es wäre Fatimahs Entscheidung gewesen, ob sie teilnehmen möchte – nicht Francescas Entscheidung.' },
+    { type:'correct', text:'✓ Richtig. Fatimah wurde aufgrund ihrer Religion ausgeschlossen. Ob sie letztlich teilgenommen hätte, ist irrelevant – die Einladung war ihr Recht.' },
+    { type:'wrong',   text:'Das entscheidet nicht Francesca. Jede Person hat das Recht, selbst zu entscheiden, wie sie an sozialen Anlässen teilnimmt.' }
   ],
   m4: [
-    { type: 'wrong',   text: 'Der Schutz deiner Mitarbeiterin geht vor. Belästigung durch Dritte – auch durch Kunden – ist nicht tolerierbar. Als Vorgesetzte/r hast du eine Fürsorgepflicht.' },
-    { type: 'correct', text: '✓ Richtig. Zuerst Chantale. Dann HR einschalten, damit der nächste Termin vorbereitet oder neu bewertet werden kann. Das ist Führung.' },
-    { type: 'partial', text: 'Der Ansatz ist gut, aber nicht ausreichend. Chantale sollte zuerst angesprochen werden – sie ist die Betroffene. Und HR sollte involviert sein, bevor du allein handelst.' }
+    { type:'wrong',   text:'Der Schutz der Mitarbeiterin geht vor. Belästigung durch Dritte – auch durch Kunden – ist nicht tolerierbar. Als Vorgesetzte/r hast du eine Fürsorgepflicht.' },
+    { type:'correct', text:'✓ Richtig. Zuerst Chantale als Betroffene ansprechen. Dann HR einschalten, damit der nächste Termin vorbereitet oder bewertet werden kann. Das ist Führung.' },
+    { type:'partial', text:'Der Ansatz ist gut, aber nicht ausreichend. Chantale sollte zuerst angesprochen werden. Und HR sollte involviert sein, bevor du allein handelst.' }
   ]
 };
 
 // ============================================================
-// UTILITY FUNCTIONS
+// JUDGE GAME CASES (from SIX training PDF)
 // ============================================================
+const judgeCases = [
+  {
+    id: 'J1', avatar: '👨‍💼', name: 'John', role: 'Projektleiter',
+    category: 'Sexuelle Belästigung',
+    speech: '«Oh, du trägst eine schöne Halskette – hast du dich heute extra für mich herausgeputzt?» – das habe ich zu Susan gesagt, als sie das erste Mal zu unserem Meeting kam. Es war doch nur ein nettes Kompliment.',
+    verdict: 'unzulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Johns Kommentar ist anzüglich und unangemessen, besonders in einer ersten Begegnung im beruflichen Kontext. Sexuelle Belästigung.',
+    feedbackWrong: '✗ Falsch erkannt. Auch wenn John es als Kompliment meinte – die Absicht ist irrelevant. Entscheidend ist, wie Susan es wahrnahm. Klarer Fall von sexueller Belästigung.'
+  },
+  {
+    id: 'J2', avatar: '👨‍💼', name: 'Max', role: 'Teammitglied',
+    category: 'Sexuelle Belästigung',
+    speech: '«Gegen Komplimente kann man doch nicht sein – das ist ja was Positives! Und schau wie sie sich immer kleidet, da muss sie sich nicht wundern.» Fabienne hat mich zwar gebeten aufzuhören, aber ich mache einfach weiter.',
+    verdict: 'unzulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Max ignoriert Fabiennes klare Ablehnung und macht weiter. Die Kleidung rechtfertigt nie belästigendes Verhalten. Sexuelle Belästigung.',
+    feedbackWrong: '✗ Falsch erkannt. Fabienne hat klar gesagt, dass es sie stört – und Max macht trotzdem weiter. Das ist sexuelle Belästigung, unabhängig von der Kleidung.'
+  },
+  {
+    id: 'J3', avatar: '👩‍💼', name: 'Francesca', role: 'Teamleiterin',
+    category: 'Diskriminierung',
+    speech: '«Ich habe Fatimah nicht zum Grillabend eingeladen, weil sie Muslimin ist und der Ramadan war. Sie darf sowieso nichts essen, und wir trinken Wein. Das wäre für sie eh nichts gewesen.» Ich meinte es nur gut.',
+    verdict: 'unzulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Fatimah wurde aufgrund ihrer Religion ausgeschlossen – Diskriminierung. Ob sie teilgenommen hätte, entscheidet sie selbst, nicht Francesca.',
+    feedbackWrong: '✗ Falsch erkannt. Gute Absichten schützen nicht vor Diskriminierung. Fatimah wurde wegen ihrer Religion ausgeschlossen. Das ist Diskriminierung.'
+  },
+  {
+    id: 'J4', avatar: '👨‍💼', name: 'Georg', role: 'Vorgesetzter',
+    category: 'Mobbing / Inakzeptables Verhalten',
+    speech: '«Ich schreie meine Mitarbeitenden manchmal an – aber ich behandle alle gleich, Männer wie Frauen. Das ist doch fair. Die Arbeitswelt ist kein Streichelzoo.»',
+    verdict: 'unzulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Anschreien ist inakzeptabel – unabhängig davon, ob es alle gleich trifft. "Faire Gleichbehandlung beim Fehlverhalten" schützt nicht.',
+    feedbackWrong: '✗ Falsch erkannt. Anschreien ist nicht tolerierbar, egal ob alle gleich behandelt werden. Es ist inakzeptables Verhalten und kann Mobbing sein.'
+  },
+  {
+    id: 'J5', avatar: '👩‍💼', name: 'Ella', role: 'Vorgesetzte',
+    category: 'Diskriminierung',
+    speech: '«Ich habe Martina gesagt, dass ich die Homo-Ehe nicht unterstütze, weil Homosexualität gegen meine religiösen Überzeugungen verstösst. Das ist meine ehrliche, persönliche Meinung.»',
+    verdict: 'unzulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Persönliche religiöse Überzeugungen rechtfertigen keine diskriminierenden Äusserungen gegenüber Mitarbeitenden. Diskriminierung aufgrund sexueller Orientierung.',
+    feedbackWrong: '✗ Falsch erkannt. Auch persönliche Überzeugungen schützen nicht. Diese Äusserung gegenüber Martina ist Diskriminierung aufgrund ihrer sexuellen Orientierung.'
+  },
+  {
+    id: 'J6', avatar: '👩‍💼', name: 'Sandra', role: 'Teamleiterin',
+    category: 'Konstruktives Feedback',
+    speech: '«Ich habe meinem Mitarbeiter Marco in einem privaten Gespräch gesagt, dass seine Leistungen nicht den Erwartungen entsprechen, und wir haben zusammen konkrete Ziele vereinbart.»',
+    verdict: 'zulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Konstruktives, sachliches Leistungsfeedback unter vier Augen ist Führungsaufgabe – kein Mobbing und keine Diskriminierung.',
+    feedbackWrong: '✗ Falsch erkannt. Privates Leistungsfeedback ist legitim und wichtig. "Kritisiere unter vier Augen, lobe öffentlich" – das ist gute Führung, kein Fehlverhalten.'
+  },
+  {
+    id: 'J7', avatar: '👨‍💼', name: 'Thomas', role: 'Abteilungsleiter',
+    category: 'Organisatorische Entscheidung',
+    speech: '«Unser Team spricht vier verschiedene Sprachen. Ich habe entschieden, dass alle Meetings auf Englisch stattfinden, damit wir uns alle verstehen und niemand ausgeschlossen wird.»',
+    verdict: 'zulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Die Wahl einer gemeinsamen Arbeitssprache ist eine legitime organisatorische Entscheidung – keine Diskriminierung.',
+    feedbackWrong: '✗ Falsch erkannt. Das Festlegen von Englisch als Arbeitssprache dient der Verständigung. Das ist keine Diskriminierung. Vergleiche: "Das Meeting wird auf Deutsch stattfinden und mit deinen Kenntnissen wirst du nichts verstehen" – das wäre anders.'
+  },
+  {
+    id: 'J8', avatar: '👨‍💼', name: 'Peter', role: 'Projektteammitglied',
+    category: 'Unerwünschter Kontakt',
+    speech: '«Ich schicke Sarah immer wieder private WhatsApp-Nachrichten und Bilder aus meinem Privatleben. Sie hat meine Einladungen mehrmals höflich abgelehnt – aber ich versuche es einfach weiter. Vielleicht ändert sie ja irgendwann ihre Meinung.»',
+    verdict: 'unzulaessig',
+    feedbackCorrect: '✓ Richtig erkannt. Sarah hat mehrfach klar Nein gesagt. Weiterer unerwünschter persönlicher Kontakt trotz Ablehnung ist nicht akzeptabel und kann sexuelle Belästigung sein.',
+    feedbackWrong: '✗ Falsch erkannt. Sarah hat mehrmals abgelehnt – das ist ein klares Signal. Anhaltender unerwünschter Kontakt trotz Ablehnung ist inakzeptables Verhalten.'
+  }
+];
 
-/** Fisher-Yates shuffle and pick first n */
+// Judge state
+let judgeState = {
+  currentCase: 0,
+  score: 0,
+  combo: 0,
+  results: []   // { caseId, correct, name }
+};
+
+// ============================================================
+// UTILITIES
+// ============================================================
 function pickRandom(arr, n) {
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -1358,111 +1371,93 @@ function pickRandom(arr, n) {
   return copy.slice(0, n);
 }
 
-/** Format today's date as DD.MM.YYYY */
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function todayFormatted() {
   const d = new Date();
   return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`;
+}
+
+function updateHeaderScore() {
+  document.getElementById('header-score-val').textContent = state.totalScore;
+  document.getElementById('judge-score-display').textContent = judgeState.score;
 }
 
 // ============================================================
 // SCREEN NAVIGATION
 // ============================================================
 const screenOrder = [
-  'screen-start',
-  'screen-pretest',
-  'screen-m1',
-  'screen-m2',
-  'screen-m3',
-  'screen-m4',
-  'screen-finaltest',
-  'screen-cert'
+  'screen-start','screen-pretest','screen-m1','screen-m2',
+  'screen-m3','screen-m4','screen-judge','screen-cert'
 ];
 
 function goToScreen(id) {
-  // Hide current
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  // Show target
   document.getElementById(id).classList.add('active');
-  state.currentScreen = id;
-
-  // Update progress bar
   updateProgress(id);
-
-  // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Run any screen-init hooks
-  if (id === 'screen-m1') initM1();
-  if (id === 'screen-m2') initM2();
-  if (id === 'screen-m3') initM3();
-  if (id === 'screen-finaltest') initFinalTest();
-  if (id === 'screen-cert') initCert();
+  const hooks = {
+    'screen-m1': initM1,
+    'screen-m2': initM2,
+    'screen-m3': initM3,
+    'screen-judge': initJudgeGame,
+    'screen-cert': initCert
+  };
+  if (hooks[id]) hooks[id]();
 }
 
 function updateProgress(screenId) {
-  const progressEl = document.getElementById('progress-section');
-  if (screenId === 'screen-start') {
-    progressEl.style.display = 'none';
-    return;
-  }
+  const progressEl  = document.getElementById('progress-section');
+  const scoreEl     = document.getElementById('header-score');
+  if (screenId === 'screen-start') { progressEl.style.display = 'none'; scoreEl.classList.remove('visible'); return; }
 
   progressEl.style.display = 'block';
-  const idx = screenOrder.indexOf(screenId);
-  // Screens 1-7 → steps 1-7
-  const step = Math.max(1, idx); // idx 1 = step 1
-  const totalSteps = 7;
-  const pct = Math.round((step / totalSteps) * 100);
+  scoreEl.classList.add('visible');
 
-  document.getElementById('progress-label-text').textContent = `Schritt ${step} von ${totalSteps}`;
-  document.getElementById('progress-pct').textContent = `${pct}%`;
-  document.getElementById('progress-fill').style.width = `${pct}%`;
+  const idx  = screenOrder.indexOf(screenId);
+  const step = Math.max(1, idx);
+  const pct  = Math.round((step / 7) * 100);
+
+  document.getElementById('progress-label-text').textContent = `Schritt ${step} von 7`;
+  document.getElementById('progress-pct').textContent        = `${pct}%`;
+  document.getElementById('progress-fill').style.width       = `${pct}%`;
+  updateHeaderScore();
 }
 
 // ============================================================
-// SCREEN 0: START
+// SCREEN 0 – START
 // ============================================================
 function startTraining() {
   const name  = document.getElementById('input-name').value.trim();
   const email = document.getElementById('input-email').value.trim();
   const errEl = document.getElementById('start-error');
-
-  if (!name || !email || !email.includes('@')) {
-    errEl.classList.remove('hidden');
-    return;
-  }
-
+  if (!name || !email || !email.includes('@')) { errEl.classList.remove('hidden'); return; }
   errEl.classList.add('hidden');
   state.userName  = name;
   state.userEmail = email;
-
   initPretest();
   goToScreen('screen-pretest');
 }
 
 // ============================================================
-// SCREEN 1: PRETEST
+// SCREEN 1 – PRETEST
 // ============================================================
 function initPretest() {
-  pretestQuestions = pickRandom(pretestPool, 5);
+  pretestQuestions   = pickRandom(pretestPool, 5);
   pretestUserAnswers = {};
-
-  const container = document.getElementById('pretest-container');
+  const container    = document.getElementById('pretest-container');
   container.innerHTML = '';
 
   pretestQuestions.forEach((q, qi) => {
     const card = document.createElement('div');
     card.className = 'quiz-question-card';
-    card.id = `pretest-q-${qi}`;
-
-    let optsHtml = q.opts.map((opt, oi) =>
-      `<button class="answer-btn" id="pre-${qi}-${oi}" onclick="selectPretestAnswer(${qi}, ${oi})">${String.fromCharCode(65+oi)}) ${escHtml(opt)}</button>`
+    const optsHtml = q.opts.map((opt, oi) =>
+      `<button class="answer-btn" id="pre-${qi}-${oi}" onclick="selectPretestAnswer(${qi},${oi})">${String.fromCharCode(65+oi)}) ${escHtml(opt)}</button>`
     ).join('');
-
-    card.innerHTML = `
-      <div class="question-number">Frage ${qi+1} von 5</div>
-      <div class="question-text">${escHtml(q.q)}</div>
-      <div class="answer-options">${optsHtml}</div>
-    `;
+    card.innerHTML = `<div class="question-number">Frage ${qi+1} von 5</div><div class="question-text">${escHtml(q.q)}</div><div class="answer-options">${optsHtml}</div>`;
     container.appendChild(card);
   });
 
@@ -1471,174 +1466,105 @@ function initPretest() {
   document.getElementById('btn-pretest-submit').disabled = true;
 }
 
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
 function selectPretestAnswer(qi, oi) {
-  // Deselect siblings
   pretestQuestions[qi].opts.forEach((_, idx) => {
-    const btn = document.getElementById(`pre-${qi}-${idx}`);
-    btn.classList.remove('correct','wrong');
-    btn.style.borderColor = '';
-    btn.style.background  = '';
-    btn.style.color       = '';
+    const b = document.getElementById(`pre-${qi}-${idx}`);
+    b.style.borderColor = ''; b.style.background = '';
   });
-
-  // Highlight selected
-  const chosen = document.getElementById(`pre-${qi}-${oi}`);
-  chosen.style.borderColor = '#1B3A5C';
-  chosen.style.background  = '#e8f0fb';
-
+  const btn = document.getElementById(`pre-${qi}-${oi}`);
+  btn.style.borderColor = '#E8392A'; btn.style.background = '#FFF5F4';
   pretestUserAnswers[qi] = oi;
-
-  // Enable submit if all answered
-  if (Object.keys(pretestUserAnswers).length === pretestQuestions.length) {
-    document.getElementById('btn-pretest-submit').disabled = false;
-  }
+  if (Object.keys(pretestUserAnswers).length === 5) document.getElementById('btn-pretest-submit').disabled = false;
 }
 
 function submitPretest() {
   let score = 0;
   pretestQuestions.forEach((q, qi) => {
     const chosen = pretestUserAnswers[qi];
-    const correct = q.correct;
-    if (chosen === correct) score++;
-
-    // Show correct/wrong styling
+    if (chosen === q.correct) score++;
     q.opts.forEach((_, oi) => {
-      const btn = document.getElementById(`pre-${qi}-${oi}`);
-      btn.disabled = true;
-      btn.style.borderColor = '';
-      btn.style.background  = '';
-      btn.style.color       = '';
-      if (oi === correct) {
-        btn.classList.add('correct');
-      } else if (oi === chosen && chosen !== correct) {
-        btn.classList.add('wrong');
-      }
+      const b = document.getElementById(`pre-${qi}-${oi}`);
+      b.disabled = true; b.style.borderColor = ''; b.style.background = '';
+      if (oi === q.correct) b.classList.add('correct');
+      else if (oi === chosen && chosen !== q.correct) b.classList.add('wrong');
     });
   });
 
-  state.pretestScore = score;
+  state.testModus = score <= 2 ? 'vollstaendig' : score <= 4 ? 'standard' : 'kompakt';
 
-  // Determine modus
-  if (score <= 2) {
-    state.testModus = 'vollstaendig';
-  } else if (score <= 4) {
-    state.testModus = 'standard';
-  } else {
-    state.testModus = 'kompakt';
-  }
+  const banner   = document.getElementById('pretest-result-banner');
+  const modeText = { vollstaendig:'📖 Modus: <strong>Vollständig</strong> – du siehst alle Erklärungen in voller Länge.', standard:'📖 Modus: <strong>Standard</strong> – du siehst alle Theorieblöcke in normaler Länge.', kompakt:'📖 Modus: <strong>Kompakt</strong> – du siehst kurze Zusammenfassungen.' };
+  const resultText = score <= 2 ? 'Du siehst die vollständige Theorie.' : score <= 4 ? 'Du kennst die Grundlagen bereits gut.' : 'Ausgezeichnet! Du kennst das Thema sehr gut.';
 
-  // Show result
-  const banner = document.getElementById('pretest-result-banner');
-  const scoreEl = document.getElementById('pretest-score-display');
-  const textEl  = document.getElementById('pretest-result-text');
-  const modeEl  = document.getElementById('pretest-mode-text');
+  document.getElementById('pretest-score-display').textContent = `${score} / 5`;
+  document.getElementById('pretest-result-text').textContent   = resultText;
+  document.getElementById('pretest-mode-text').innerHTML       = modeText[state.testModus];
+  banner.className = `result-banner ${score >= 3 ? 'pass' : 'fail'}`;
 
-  scoreEl.textContent = `${score} / 5`;
-
-  let resultMsg, modusMsg;
-  if (score <= 2) {
-    resultMsg = 'Du siehst alle Theorieblöcke in voller Länge.';
-    modusMsg  = '📖 Modus: <strong>Vollständig</strong> – Du bekommst alle Erklärungen in detail, damit du gut gerüstet bist.';
-    banner.className = 'result-banner fail';
-  } else if (score <= 4) {
-    resultMsg = 'Du kennst die Grundlagen bereits gut.';
-    modusMsg  = '📖 Modus: <strong>Standard</strong> – Du siehst alle Theorieblöcke in normaler Länge.';
-    banner.className = 'result-banner pass';
-  } else {
-    resultMsg = 'Ausgezeichnet! Du kennst das Thema bereits sehr gut.';
-    modusMsg  = '📖 Modus: <strong>Kompakt</strong> – Du siehst kurze Theorie-Zusammenfassungen.';
-    banner.className = 'result-banner pass';
-  }
-
-  textEl.textContent = resultMsg;
-  modeEl.innerHTML   = modusMsg;
-
-  // Hide submit, show result
   document.getElementById('pretest-submit-row').classList.add('hidden');
   document.getElementById('pretest-result').classList.remove('hidden');
+
+  // Update video filenames to match mode
+  document.getElementById('video-m1-file').textContent = `mobbing-${state.testModus}.mp4`;
 }
 
 // ============================================================
-// SCREEN 2: MODUL 1
+// MODULE INITS
 // ============================================================
 function initM1() {
-  document.getElementById('theory-m1').innerHTML = theory.m1[state.testModus] || theory.m1.standard;
-  // Reset scenario if re-visiting
-  if (!state.answered.m1) {
-    document.getElementById('btn-m1-next').disabled = true;
-  }
+  document.getElementById('theory-m1').innerHTML = theory.m1[state.testModus];
+  if (!state.answered.m1) document.getElementById('btn-m1-next').disabled = true;
 }
-
-// ============================================================
-// SCREEN 3: MODUL 2
-// ============================================================
 function initM2() {
-  document.getElementById('theory-m2').innerHTML = theory.m2[state.testModus] || theory.m2.standard;
-  if (!state.answered.m2a || !state.answered.m2b) {
-    document.getElementById('btn-m2-next').disabled = true;
-  }
+  document.getElementById('theory-m2').innerHTML = theory.m2[state.testModus];
+  if (!state.answered.m2a || !state.answered.m2b) document.getElementById('btn-m2-next').disabled = true;
 }
-
-// ============================================================
-// SCREEN 4: MODUL 3
-// ============================================================
 function initM3() {
-  document.getElementById('theory-m3').innerHTML = theory.m3[state.testModus] || theory.m3.standard;
-  if (!state.answered.m3) {
-    document.getElementById('btn-m3-next').disabled = true;
-  }
+  document.getElementById('theory-m3').innerHTML = theory.m3[state.testModus];
+  if (!state.answered.m3) document.getElementById('btn-m3-next').disabled = true;
 }
 
 // ============================================================
-// GENERIC SCENARIO ANSWER
+// SCENARIO ANSWERS
 // ============================================================
-// isCorrect: true | false | 'partial'
 function selectAnswer(moduleId, optionIndex, isCorrect) {
   const optsEl  = document.getElementById(`opts-${moduleId}`);
   const fbEl    = document.getElementById(`fb-${moduleId}`);
   const buttons = optsEl.querySelectorAll('.answer-btn');
 
-  // Disable all buttons
   buttons.forEach(b => b.disabled = true);
 
-  // Style chosen button
   const chosen = buttons[optionIndex];
+  if (isCorrect === true)        chosen.classList.add('correct');
+  else if (isCorrect === 'partial') chosen.classList.add('partial');
+  else                           chosen.classList.add('wrong');
+
+  const fb = feedback[moduleId][optionIndex];
+  fbEl.innerHTML  = fb.text;
+  fbEl.className  = `feedback-box show feedback-${fb.type}`;
+
+  // Award points
   if (isCorrect === true) {
-    chosen.classList.add('correct');
-  } else if (isCorrect === 'partial') {
-    chosen.classList.add('partial');
-  } else {
-    chosen.classList.add('wrong');
+    state.totalScore += 10;
+    updateHeaderScore();
+    showComboFlash('+10 Punkte! ⭐');
   }
 
-  // Show feedback
-  const fb = feedback[moduleId][optionIndex];
-  fbEl.innerHTML = fb.text;
-  fbEl.className = `feedback-box show feedback-${fb.type}`;
-
-  // Mark answered
   state.answered[moduleId] = true;
 
-  // Unlock next button based on module
-  if (moduleId === 'm1') {
-    document.getElementById('btn-m1-next').disabled = false;
-  } else if (moduleId === 'm2a') {
-    if (state.answered.m2b) document.getElementById('btn-m2-next').disabled = false;
-  } else if (moduleId === 'm2b') {
-    if (state.answered.m2a) document.getElementById('btn-m2-next').disabled = false;
-  } else if (moduleId === 'm3') {
-    document.getElementById('btn-m3-next').disabled = false;
-  } else if (moduleId === 'm4') {
-    document.getElementById('btn-m4-next').disabled = false;
-  }
+  // Unlock next
+  const nextMap = {
+    m1:  () => { document.getElementById('btn-m1-next').disabled = false; },
+    m2a: () => { if (state.answered.m2b) document.getElementById('btn-m2-next').disabled = false; },
+    m2b: () => { if (state.answered.m2a) document.getElementById('btn-m2-next').disabled = false; },
+    m3:  () => { document.getElementById('btn-m3-next').disabled = false; },
+    m4:  () => { document.getElementById('btn-m4-next').disabled = false; }
+  };
+  if (nextMap[moduleId]) nextMap[moduleId]();
 }
 
 // ============================================================
-// SCREEN 5: MELDEWEGE
+// SCREEN 5 – MELDEWEGE
 // ============================================================
 function selectPath(path) {
   document.getElementById('btn-path-a').classList.toggle('selected', path === 'a');
@@ -1648,137 +1574,202 @@ function selectPath(path) {
 }
 
 // ============================================================
-// SCREEN 6: ABSCHLUSSTEST
+// JUDGE GAME
 // ============================================================
-function initFinalTest() {
-  finalUserAnswers = {};
-  const container = document.getElementById('finaltest-container');
+function initJudgeGame() {
+  judgeState = { currentCase: 0, score: 0, combo: 0, results: [] };
+  document.getElementById('judge-result').classList.remove('visible');
+  document.getElementById('judge-result').style.display = 'none';
+  renderJudgeDots();
+  renderJudgeCase(0);
+}
+
+function renderJudgeDots() {
+  const container = document.getElementById('judge-dots');
   container.innerHTML = '';
-
-  finalQuestions.forEach((q, qi) => {
-    const card = document.createElement('div');
-    card.className = 'quiz-question-card';
-    card.id = `final-q-${qi}`;
-
-    let optsHtml = q.opts.map((opt, oi) =>
-      `<button class="answer-btn" id="fin-${qi}-${oi}" onclick="selectFinalAnswer(${qi}, ${oi})">${String.fromCharCode(65+oi)}) ${escHtml(opt)}</button>`
-    ).join('');
-
-    card.innerHTML = `
-      <div class="question-number">Frage ${qi+1} von 10</div>
-      <div class="question-text">${escHtml(q.q)}</div>
-      <div class="answer-options">${optsHtml}</div>
-    `;
-    container.appendChild(card);
+  judgeCases.forEach((c, i) => {
+    const dot = document.createElement('div');
+    dot.className = `judge-dot ${i === 0 ? 'active' : ''}`;
+    dot.id = `dot-${i}`;
+    dot.textContent = i + 1;
+    container.appendChild(dot);
   });
-
-  document.getElementById('finaltest-result').classList.add('hidden');
-  document.getElementById('finaltest-submit-row').classList.remove('hidden');
-  document.getElementById('btn-final-submit').disabled = true;
 }
 
-function selectFinalAnswer(qi, oi) {
-  // Deselect siblings
-  finalQuestions[qi].opts.forEach((_, idx) => {
-    const btn = document.getElementById(`fin-${qi}-${idx}`);
-    btn.style.borderColor = '';
-    btn.style.background  = '';
-  });
+function renderJudgeCase(index) {
+  const c = judgeCases[index];
+  const container = document.getElementById('judge-case-container');
 
-  // Highlight selected
-  const chosen = document.getElementById(`fin-${qi}-${oi}`);
-  chosen.style.borderColor = '#1B3A5C';
-  chosen.style.background  = '#e8f0fb';
-
-  finalUserAnswers[qi] = oi;
-
-  // Enable submit if all answered
-  if (Object.keys(finalUserAnswers).length === finalQuestions.length) {
-    document.getElementById('btn-final-submit').disabled = false;
-  }
+  container.innerHTML = `
+    <div class="character-card" id="judge-card-${index}">
+      <div class="character-top">
+        <div class="character-avatar">
+          <div class="avatar-figure">${c.avatar}</div>
+          <div class="avatar-name">${c.name}</div>
+          <div class="avatar-role">${c.role}</div>
+        </div>
+        <div class="character-speech">
+          <span class="speech-category">${escHtml(c.category)}</span>
+          <div class="speech-bubble">${escHtml(c.speech)}</div>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <button class="verdict-btn verdict-ok"  id="vbtn-ok-${index}"  onclick="makeVerdict('zulaessig',  ${index})">✓ Zulässig</button>
+        <button class="verdict-btn verdict-nok" id="vbtn-nok-${index}" onclick="makeVerdict('unzulaessig', ${index})">✗ Unzulässig</button>
+      </div>
+      <div class="verdict-feedback" id="vfb-${index}"></div>
+    </div>
+  `;
 }
 
-function submitFinalTest() {
-  let score = 0;
-  finalQuestions.forEach((q, qi) => {
-    const chosen  = finalUserAnswers[qi];
-    const correct = q.correct;
-    if (chosen === correct) score++;
+function makeVerdict(verdict, index) {
+  const c = judgeCases[index];
+  const correct = verdict === c.verdict;
 
-    // Reveal answers
-    q.opts.forEach((_, oi) => {
-      const btn = document.getElementById(`fin-${qi}-${oi}`);
-      btn.disabled = true;
-      btn.style.borderColor = '';
-      btn.style.background  = '';
-      if (oi === correct) {
-        btn.classList.add('correct');
-      } else if (oi === chosen && chosen !== correct) {
-        btn.classList.add('wrong');
-      }
-    });
-  });
+  // Disable both verdict buttons
+  document.getElementById(`vbtn-ok-${index}`).disabled  = true;
+  document.getElementById(`vbtn-nok-${index}`).disabled = true;
 
-  state.finalScore = score;
+  const fbEl = document.getElementById(`vfb-${index}`);
+  fbEl.textContent = correct ? c.feedbackCorrect : c.feedbackWrong;
+  fbEl.className   = `verdict-feedback show ${correct ? 'vf-correct' : 'vf-wrong'}`;
 
-  const banner  = document.getElementById('finaltest-result-banner');
-  const scoreEl = document.getElementById('finaltest-score-display');
-  const textEl  = document.getElementById('finaltest-result-text');
-  const btnPass  = document.getElementById('btn-final-pass');
-  const btnRetry = document.getElementById('btn-final-retry');
+  // Update dot
+  const dot = document.getElementById(`dot-${index}`);
+  dot.className = `judge-dot ${correct ? 'correct' : 'wrong'}`;
 
-  scoreEl.textContent = `${score} / 10`;
-
-  if (score >= 8) {
-    banner.className  = 'result-banner pass';
-    textEl.textContent = `Bestanden ✓ – Hervorragend! Du hast ${score} von 10 Fragen richtig beantwortet.`;
-    btnPass.style.display  = 'inline-block';
-    btnRetry.style.display = 'none';
+  // Scoring
+  if (correct) {
+    judgeState.score += 20;
+    judgeState.combo++;
+    state.totalScore += 20;
+    if (judgeState.combo >= 3) {
+      judgeState.score += 10;
+      state.totalScore += 10;
+      showComboFlash('🔥 Combo! +30 Punkte');
+    } else {
+      showComboFlash('+20 Punkte! ⭐');
+    }
+    showStamp('ok');
   } else {
-    banner.className  = 'result-banner fail';
-    textEl.textContent = `Nicht bestanden – Du hast ${score} von 10 richtig. Du brauchst mindestens 8. Versuche es nochmal!`;
-    btnPass.style.display  = 'none';
-    btnRetry.style.display = 'inline-block';
+    judgeState.combo = 0;
+    showStamp('guilty');
   }
 
-  document.getElementById('finaltest-submit-row').classList.add('hidden');
-  document.getElementById('finaltest-result').classList.remove('hidden');
+  judgeState.results.push({ caseId: c.id, name: c.name, category: c.category, correct });
+  updateHeaderScore();
 
-  // Scroll to result
+  // Advance after delay
   setTimeout(() => {
-    document.getElementById('finaltest-result').scrollIntoView({ behavior:'smooth', block:'start' });
-  }, 200);
+    judgeState.currentCase++;
+    hideStamp();
+    if (judgeState.currentCase < judgeCases.length) {
+      // Update next dot to active
+      const nextDot = document.getElementById(`dot-${judgeState.currentCase}`);
+      if (nextDot) nextDot.classList.add('active');
+      renderJudgeCase(judgeState.currentCase);
+    } else {
+      showJudgeResult();
+    }
+  }, 2200);
 }
 
-function retryFinalTest() {
-  initFinalTest();
+function showJudgeResult() {
+  document.getElementById('judge-case-container').innerHTML = '';
+  const resultEl = document.getElementById('judge-result');
+  resultEl.style.display = 'block';
+  resultEl.classList.add('visible');
+
+  const correctCount = judgeState.results.filter(r => r.correct).length;
+  const pass = correctCount >= 6;
+
+  document.getElementById('judge-result-score').textContent = `${correctCount} / 8 richtig · ${judgeState.score} Punkte`;
+  document.getElementById('judge-result-text').textContent  = pass
+    ? `Bestanden ✓ – Du hast ${correctCount} von 8 Fällen korrekt beurteilt.`
+    : `Nicht bestanden – Du hast ${correctCount} von 8. Du brauchst mindestens 6 richtig.`;
+
+  document.getElementById('judge-result-banner').className = `result-banner ${pass ? 'pass' : 'fail'}`;
+
+  // Case summary
+  const summaryEl = document.getElementById('judge-case-summary');
+  summaryEl.innerHTML = judgeState.results.map(r =>
+    `<div class="result-case-row">
+      <span class="result-icon">${r.correct ? '✅' : '❌'}</span>
+      <span class="result-case-name">${escHtml(r.name)} – ${escHtml(r.category)}</span>
+      <span class="result-case-verdict ${r.correct ? 'correct' : 'wrong'}">${r.correct ? 'Richtig' : 'Falsch'}</span>
+    </div>`
+  ).join('');
+
+  const btnPass  = document.getElementById('btn-judge-pass');
+  const btnRetry = document.getElementById('btn-judge-retry');
+  btnPass.classList.toggle('hidden', !pass);
+  btnRetry.classList.toggle('hidden', pass);
+
+  setTimeout(() => resultEl.scrollIntoView({ behavior:'smooth', block:'start' }), 100);
+}
+
+function retryJudge() {
+  // Deduct previous judge score from total
+  state.totalScore -= judgeState.score;
+  if (state.totalScore < 0) state.totalScore = 0;
+  initJudgeGame();
 }
 
 // ============================================================
-// SCREEN 7: ZERTIFIKAT
+// STAMP ANIMATION
+// ============================================================
+function showStamp(type) {
+  const overlay = document.getElementById('stamp-overlay');
+  const el      = document.getElementById('stamp-element');
+
+  el.className = '';
+  if (type === 'guilty') {
+    el.textContent = 'UNZULÄSSIG';
+    el.className   = 'guilty';
+  } else {
+    el.textContent = 'ZULÄSSIG';
+    el.className   = 'ok-stamp';
+  }
+
+  void overlay.offsetWidth; // force reflow
+  overlay.classList.add('active');
+}
+
+function hideStamp() {
+  document.getElementById('stamp-overlay').classList.remove('active');
+}
+
+// ============================================================
+// COMBO FLASH
+// ============================================================
+function showComboFlash(msg) {
+  const el = document.getElementById('combo-flash');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1600);
+}
+
+// ============================================================
+// CERTIFICATE
 // ============================================================
 function initCert() {
-  document.getElementById('cert-name-display').textContent   = state.userName;
-  document.getElementById('cert-score-display').textContent  = `${state.finalScore} / 10 Punkte`;
-  document.getElementById('cert-date-display').textContent   = todayFormatted();
+  document.getElementById('cert-name-display').textContent  = state.userName;
+  document.getElementById('cert-score-display').textContent = `${state.totalScore} Punkte`;
+  document.getElementById('cert-date-display').textContent  = todayFormatted();
 }
 
-function printCertificate() {
-  window.print();
-}
+function printCertificate() { window.print(); }
 
 function emailCertificate() {
   const subject = encodeURIComponent('SIX Compliance-Zertifikat – Maintaining a Harassment-Free Workplace');
   const body = encodeURIComponent(
-    `Guten Tag,\n\n` +
-    `anbei das Zertifikat für die abgeschlossene Pflichtschulung:\n\n` +
+    `Guten Tag,\n\nAnbei die Bestätigung für die abgeschlossene Pflichtschulung:\n\n` +
     `Name: ${state.userName}\n` +
     `Schulung: Maintaining a Harassment-Free Workplace\n` +
-    `Ergebnis: ${state.finalScore} / 10 Punkte\n` +
+    `Gesamtpunktzahl: ${state.totalScore} Punkte\n` +
     `Datum: ${todayFormatted()}\n\n` +
     `Hinweis: In einer produktiven Umgebung würde dieses Zertifikat automatisch generiert und versendet.\n\n` +
-    `SIX Group AG · Compliance\n` +
-    `compliance-helpline@six-group.com`
+    `SIX Group AG · Compliance\ncompliance-helpline@six-group.com`
   );
   window.location.href = `mailto:${encodeURIComponent(state.userEmail)}?subject=${subject}&body=${body}`;
 }
