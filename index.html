@@ -512,13 +512,24 @@ input:focus { border-color: #E8392A; }
   display: none;
   padding: 16px 24px;
   border-top: 1px solid #F0F0F0;
-  font-size: 15px;
-  line-height: 1.6;
+  background: #F8F8F8;
   animation: fadeIn 0.3s ease;
 }
 .verdict-feedback.show { display: block; }
-.verdict-feedback.vf-correct { background: #E8F5E9; color: #1B5E20; }
-.verdict-feedback.vf-wrong   { background: #FFEBEE; color: #B71C1C; }
+
+.vf-indicator {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.vf-indicator.vf-ok  { color: #2E7D32; }
+.vf-indicator.vf-nok { color: #C62828; }
+
+.vf-explanation {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
 
 /* ===== STAMP OVERLAY ===== */
 #stamp-overlay {
@@ -674,18 +685,16 @@ input:focus { border-color: #E8392A; }
 <!-- ===== HEADER ===== -->
 <header id="app-header">
   <div class="six-logo-wrap">
-    <!-- SIX Group logo – reconstructed from brand image -->
-    <svg class="six-logo-svg" viewBox="0 0 430 115" xmlns="http://www.w3.org/2000/svg" aria-label="SIX Group">
-      <!-- S: open flowing S-curve with thick uniform stroke -->
+    <!-- SIX Group Logo – Datei: assets/images/six-logo.png -->
+    <img src="assets/images/six-logo.png" class="six-logo-svg" alt="SIX Group"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <!-- Fallback falls Datei fehlt -->
+    <svg class="six-logo-svg" viewBox="0 0 430 115" xmlns="http://www.w3.org/2000/svg" aria-label="SIX Group" style="display:none">
       <path fill="none" stroke="#E8392A" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"
             d="M 9,77 C 9,106 29,111 55,111 C 81,111 97,98 97,79 C 97,61 81,54 55,54 C 29,54 9,48 9,27 C 9,7 29,2 55,2 C 81,2 97,12 97,34"/>
-      <!-- I: vertical bar -->
       <rect fill="#E8392A" x="144" y="4" width="25" height="107" rx="1"/>
-      <!-- X: two diagonal arms – square-cut ends to match SIX brand style -->
-      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square"
-            x1="224" y1="4"   x2="422" y2="111"/>
-      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square"
-            x1="422" y1="4"   x2="224" y2="111"/>
+      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="224" y1="4" x2="422" y2="111"/>
+      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="422" y1="4" x2="224" y2="111"/>
     </svg>
     <div class="header-divider"></div>
     <span class="header-subtitle">Compliance Schulung</span>
@@ -716,14 +725,17 @@ input:focus { border-color: #E8392A; }
      ============================================================ -->
 <div class="screen active" id="screen-start">
   <div class="start-hero">
-    <!-- Large SIX logo on start screen -->
+    <!-- SIX Logo gross – Datei: assets/images/six-logo.png -->
+    <img src="assets/images/six-logo.png" alt="SIX Group"
+         style="height:72px;width:auto;display:block;margin:0 auto 8px;"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <svg viewBox="0 0 430 115" xmlns="http://www.w3.org/2000/svg" aria-label="SIX Group"
-         style="height:72px;width:auto;display:block;margin:0 auto 8px;">
+         style="height:72px;width:auto;display:none;margin:0 auto 8px;">
       <path fill="none" stroke="#E8392A" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"
             d="M 9,77 C 9,106 29,111 55,111 C 81,111 97,98 97,79 C 97,61 81,54 55,54 C 29,54 9,48 9,27 C 9,7 29,2 55,2 C 81,2 97,12 97,34"/>
       <rect fill="#E8392A" x="144" y="4" width="25" height="107" rx="1"/>
-      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="224" y1="4"   x2="422" y2="111"/>
-      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="422" y1="4"   x2="224" y2="111"/>
+      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="224" y1="4" x2="422" y2="111"/>
+      <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="422" y1="4" x2="224" y2="111"/>
     </svg>
   </div>
 
@@ -816,15 +828,11 @@ input:focus { border-color: #E8392A; }
       <p style="font-size:13px;color:#777;margin-bottom:0;">Schau das Video an, bevor du weitergehst.</p>
     </div>
     <div class="video-block" style="border-radius:0;margin-bottom:0;">
-      <!--
-        Video einbetten: Ersetze src="" mit dem tatsächlichen Dateipfad.
-        Dateiname je nach Modus:
-        • Kompakt:     mobbing-kompakt.mp4
-        • Standard:    mobbing-standard.mp4
-        • Vollständig: mobbing-vollstaendig.mp4
-        <video controls style="width:100%;" poster="">
-          <source src="mobbing-standard.mp4" type="video/mp4">
-        </video>
+      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
+      <video controls style="width:100%;display:block;" preload="metadata">
+        <source src="assets/videos/mobbing-standard.mp4" type="video/mp4">
+        Dein Browser unterstützt kein Video.
+      </video>
       -->
       <div class="video-poster" id="video-m1-poster">
         <div class="video-title-txt">Mobbing am Arbeitsplatz</div>
@@ -833,7 +841,7 @@ input:focus { border-color: #E8392A; }
       </div>
       <div class="video-info-bar">
         <span id="video-m1-duration">Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename" id="video-m1-file">mobbing-[modus].mp4</span>
+        <span class="video-filename" id="video-m1-file">assets/videos/mobbing-[modus].mp4</span>
       </div>
     </div>
   </div>
@@ -886,9 +894,14 @@ input:focus { border-color: #E8392A; }
         <div class="play-btn-circle"><div class="play-icon"></div></div>
         <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
+      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
+      <video controls style="width:100%;display:block;" preload="metadata">
+        <source src="assets/videos/belaestigung-standard.mp4" type="video/mp4">
+      </video>
+      -->
       <div class="video-info-bar">
         <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename">belaestigung-[modus].mp4</span>
+        <span class="video-filename">assets/videos/belaestigung-[modus].mp4</span>
       </div>
     </div>
   </div>
@@ -958,9 +971,14 @@ input:focus { border-color: #E8392A; }
         <div class="play-btn-circle"><div class="play-icon"></div></div>
         <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
+      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
+      <video controls style="width:100%;display:block;" preload="metadata">
+        <source src="assets/videos/diskriminierung-standard.mp4" type="video/mp4">
+      </video>
+      -->
       <div class="video-info-bar">
         <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename">diskriminierung-[modus].mp4</span>
+        <span class="video-filename">assets/videos/diskriminierung-[modus].mp4</span>
       </div>
     </div>
   </div>
@@ -1014,9 +1032,14 @@ input:focus { border-color: #E8392A; }
         <div class="play-btn-circle"><div class="play-icon"></div></div>
         <div class="video-caption">Video von NotebookLM einfügen</div>
       </div>
+      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
+      <video controls style="width:100%;display:block;" preload="metadata">
+        <source src="assets/videos/meldewege-standard.mp4" type="video/mp4">
+      </video>
+      -->
       <div class="video-info-bar">
         <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename">meldewege-[modus].mp4</span>
+        <span class="video-filename">assets/videos/meldewege-[modus].mp4</span>
       </div>
     </div>
   </div>
@@ -1127,13 +1150,17 @@ input:focus { border-color: #E8392A; }
     <p style="color:#555;margin-bottom:24px;">Du hast die Pflichtschulung erfolgreich abgeschlossen.</p>
 
     <div class="certificate-wrapper" id="certificate-block">
+      <!-- SIX Logo Zertifikat – Datei: assets/images/six-logo.png -->
+      <img src="assets/images/six-logo.png" alt="SIX Group"
+           style="height:48px;width:auto;display:block;margin:0 auto 8px;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <svg viewBox="0 0 430 115" xmlns="http://www.w3.org/2000/svg" aria-label="SIX Group"
-           style="height:48px;width:auto;display:block;margin:0 auto 8px;">
+           style="height:48px;width:auto;display:none;margin:0 auto 8px;">
         <path fill="none" stroke="#E8392A" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"
               d="M 9,77 C 9,106 29,111 55,111 C 81,111 97,98 97,79 C 97,61 81,54 55,54 C 29,54 9,48 9,27 C 9,7 29,2 55,2 C 81,2 97,12 97,34"/>
         <rect fill="#E8392A" x="144" y="4" width="25" height="107" rx="1"/>
-        <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="224" y1="4"   x2="422" y2="111"/>
-        <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="422" y1="4"   x2="224" y2="111"/>
+        <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="224" y1="4" x2="422" y2="111"/>
+        <line stroke="#E8392A" stroke-width="30" stroke-linecap="square" x1="422" y1="4" x2="224" y2="111"/>
       </svg>
       <span class="cert-logo-bar"></span>
       <div class="cert-subtitle">SIX Group AG · Zürich</div>
@@ -1517,8 +1544,8 @@ function submitPretest() {
   document.getElementById('pretest-submit-row').classList.add('hidden');
   document.getElementById('pretest-result').classList.remove('hidden');
 
-  // Update video filenames to match mode
-  document.getElementById('video-m1-file').textContent = `mobbing-${state.testModus}.mp4`;
+  // Update video filenames to reflect adaptive mode
+  document.getElementById('video-m1-file').textContent = `assets/videos/mobbing-${state.testModus}.mp4`;
 }
 
 // ============================================================
@@ -1636,20 +1663,26 @@ function renderJudgeCase(index) {
 }
 
 function makeVerdict(verdict, index) {
-  const c = judgeCases[index];
+  const c       = judgeCases[index];
   const correct = verdict === c.verdict;
 
-  // Disable both verdict buttons
+  // Disable buttons
   document.getElementById(`vbtn-ok-${index}`).disabled  = true;
   document.getElementById(`vbtn-nok-${index}`).disabled = true;
 
+  // Feedback: indicator + explanation
   const fbEl = document.getElementById(`vfb-${index}`);
-  fbEl.textContent = correct ? c.feedbackCorrect : c.feedbackWrong;
-  fbEl.className   = `verdict-feedback show ${correct ? 'vf-correct' : 'vf-wrong'}`;
+  const indicator = correct
+    ? '<div class="vf-indicator vf-ok">✓ Richtig erkannt</div>'
+    : '<div class="vf-indicator vf-nok">✗ Falsch erkannt</div>';
+  fbEl.innerHTML = indicator + `<div class="vf-explanation">${escHtml(correct ? c.feedbackCorrect : c.feedbackWrong)}</div>`;
+  fbEl.className = `verdict-feedback show`;
 
   // Update dot
-  const dot = document.getElementById(`dot-${index}`);
-  dot.className = `judge-dot ${correct ? 'correct' : 'wrong'}`;
+  document.getElementById(`dot-${index}`).className = `judge-dot ${correct ? 'correct' : 'wrong'}`;
+
+  // Stamp shows the ACTUAL verdict (Zulässig or Unzulässig), not right/wrong
+  showStamp(c.verdict);
 
   // Scoring
   if (correct) {
@@ -1663,10 +1696,8 @@ function makeVerdict(verdict, index) {
     } else {
       showComboFlash('+20 Punkte! ⭐');
     }
-    showStamp('ok');
   } else {
     judgeState.combo = 0;
-    showStamp('guilty');
   }
 
   judgeState.results.push({ caseId: c.id, name: c.name, category: c.category, correct });
@@ -1677,14 +1708,13 @@ function makeVerdict(verdict, index) {
     judgeState.currentCase++;
     hideStamp();
     if (judgeState.currentCase < judgeCases.length) {
-      // Update next dot to active
       const nextDot = document.getElementById(`dot-${judgeState.currentCase}`);
       if (nextDot) nextDot.classList.add('active');
       renderJudgeCase(judgeState.currentCase);
     } else {
       showJudgeResult();
     }
-  }, 2200);
+  }, 2600);
 }
 
 function showJudgeResult() {
@@ -1731,12 +1761,13 @@ function retryJudge() {
 // ============================================================
 // STAMP ANIMATION
 // ============================================================
-function showStamp(type) {
+// showStamp: zeigt immer das echte Urteil des Falls (nicht ob der User richtig lag)
+function showStamp(actualVerdict) {
   const overlay = document.getElementById('stamp-overlay');
   const el      = document.getElementById('stamp-element');
 
   el.className = '';
-  if (type === 'guilty') {
+  if (actualVerdict === 'unzulaessig') {
     el.textContent = 'UNZULÄSSIG';
     el.className   = 'guilty';
   } else {
@@ -1744,7 +1775,7 @@ function showStamp(type) {
     el.className   = 'ok-stamp';
   }
 
-  void overlay.offsetWidth; // force reflow
+  void overlay.offsetWidth; // force reflow for animation restart
   overlay.classList.add('active');
 }
 
