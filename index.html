@@ -739,6 +739,14 @@ input:focus { border-color: #E8392A; }
     </svg>
   </div>
 
+  <!-- Willkommensvideo für alle -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <video controls style="width:100%;display:block;" preload="metadata">
+      <source src="assets/videos/Darum_sind_wir_hier.mp4" type="video/mp4">
+      Dein Browser unterstützt kein Video.
+    </video>
+  </div>
+
   <div class="card" style="text-align:center;">
     <h1 style="font-size:24px;">Maintaining a Harassment-Free Workplace</h1>
     <p class="subtitle" style="margin-bottom:4px;">Pflichtschulung für neue Mitarbeitende · SIX Group AG</p>
@@ -802,13 +810,37 @@ input:focus { border-color: #E8392A; }
       </div>
       <div id="pretest-mode-text" class="info-box"></div>
       <div class="nav-row mt-16">
-        <button class="btn btn-primary" onclick="goToScreen('screen-m1')">Weiter zur Schulung →</button>
+        <button class="btn btn-primary" onclick="goToScreen('screen-intro')">Weiter zur Schulung →</button>
       </div>
     </div>
   </div>
 
   <div id="pretest-submit-row" class="nav-row">
     <button class="btn btn-primary" id="btn-pretest-submit" onclick="submitPretest()" disabled>Auswertung →</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCREEN 1b – EINFÜHRUNG (für alle Stufen)
+     ============================================================ -->
+<div class="screen" id="screen-intro">
+  <div class="card">
+    <div class="module-badge">Einführung</div>
+    <h2>Warum diese Schulung?</h2>
+    <p style="color:#555;">Schau das Einführungsvideo an – es erklärt, warum SIX diese Schulung macht und was dich erwartet.</p>
+  </div>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <video controls style="width:100%;display:block;" preload="metadata">
+      <source src="assets/videos/Einfuehrung_kurz.mp4" type="video/mp4">
+      Dein Browser unterstützt kein Video.
+    </video>
+  </div>
+
+  <div class="card">
+    <div class="nav-row">
+      <button class="btn btn-primary" onclick="goToScreen('screen-m1')">Weiter zu Modul 1 →</button>
+    </div>
   </div>
 </div>
 
@@ -1429,7 +1461,7 @@ function updateHeaderScore() {
 // SCREEN NAVIGATION
 // ============================================================
 const screenOrder = [
-  'screen-start','screen-pretest','screen-m1','screen-m2',
+  'screen-start','screen-pretest','screen-intro','screen-m1','screen-m2',
   'screen-m3','screen-m4','screen-judge','screen-cert'
 ];
 
