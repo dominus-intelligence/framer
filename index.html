@@ -742,7 +742,7 @@ input:focus { border-color: #E8392A; }
   <!-- Willkommensvideo für alle -->
   <div class="card" style="padding:0;overflow:hidden;">
     <video controls style="width:100%;display:block;" preload="metadata">
-      <source src="assets/videos/Darum_sind_wir_hier.mp4" type="video/mp4">
+      <source src="https://github.com/dominus-intelligence/framer/releases/download/v1.0/Darum_sind_wir_hier.mp4" type="video/mp4">
       Dein Browser unterstützt kein Video.
     </video>
   </div>
@@ -831,8 +831,8 @@ input:focus { border-color: #E8392A; }
   </div>
 
   <div class="card" style="padding:0;overflow:hidden;">
-    <video controls style="width:100%;display:block;" preload="metadata">
-      <source src="assets/videos/Einfuehrung_kurz.mp4" type="video/mp4">
+    <video id="video-intro" controls style="width:100%;display:block;" preload="metadata">
+      <source id="video-intro-src" src="" type="video/mp4">
       Dein Browser unterstützt kein Video.
     </video>
   </div>
@@ -1472,6 +1472,7 @@ function goToScreen(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const hooks = {
+    'screen-intro': initIntro,
     'screen-m1': initM1,
     'screen-m2': initM2,
     'screen-m3': initM3,
@@ -1583,6 +1584,20 @@ function submitPretest() {
 // ============================================================
 // MODULE INITS
 // ============================================================
+const introVideos = {
+  kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_kurz.mp4',
+  standard:     'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_normal.mp4',
+  vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_lang.mp4'
+};
+
+function initIntro() {
+  const src = introVideos[state.testModus] || introVideos.standard;
+  const srcEl = document.getElementById('video-intro-src');
+  const vid = document.getElementById('video-intro');
+  srcEl.src = src;
+  vid.load();
+}
+
 function initM1() {
   document.getElementById('theory-m1').innerHTML = theory.m1[state.testModus];
   if (!state.answered.m1) document.getElementById('btn-m1-next').disabled = true;
