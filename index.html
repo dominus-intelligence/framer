@@ -910,20 +910,10 @@ input:focus { border-color: #E8392A; }
       <p style="font-size:13px;color:#777;margin-bottom:0;">Zwei Formen, ein Grundsatz: Absicht ist irrelevant.</p>
     </div>
     <div class="video-block" style="border-radius:0;margin-bottom:0;">
-      <div class="video-poster">
-        <div class="video-title-txt">Sexuelle Belästigung am Arbeitsplatz</div>
-        <div class="play-btn-circle"><div class="play-icon"></div></div>
-        <div class="video-caption">Video von NotebookLM einfügen</div>
-      </div>
-      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
-      <video controls style="width:100%;display:block;" preload="metadata">
-        <source src="assets/videos/belaestigung-standard.mp4" type="video/mp4">
+      <video id="video-m2" controls style="width:100%;display:block;" preload="metadata">
+        <source id="video-m2-src" src="" type="video/mp4">
+        Dein Browser unterstützt kein Video.
       </video>
-      -->
-      <div class="video-info-bar">
-        <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename">assets/videos/belaestigung-[modus].mp4</span>
-      </div>
     </div>
   </div>
 
@@ -1038,20 +1028,10 @@ input:focus { border-color: #E8392A; }
       <p style="font-size:13px;color:#777;margin-bottom:0;">Was tun – als Betroffene/r, Beobachter/in und Vorgesetzte/r.</p>
     </div>
     <div class="video-block" style="border-radius:0;margin-bottom:0;">
-      <div class="video-poster">
-        <div class="video-title-txt">Meldewege &amp; Führungsverantwortung</div>
-        <div class="play-btn-circle"><div class="play-icon"></div></div>
-        <div class="video-caption">Video von NotebookLM einfügen</div>
-      </div>
-      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
-      <video controls style="width:100%;display:block;" preload="metadata">
-        <source src="assets/videos/meldewege-standard.mp4" type="video/mp4">
+      <video id="video-m4" controls style="width:100%;display:block;" preload="metadata">
+        <source id="video-m4-src" src="" type="video/mp4">
+        Dein Browser unterstützt kein Video.
       </video>
-      -->
-      <div class="video-info-bar">
-        <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename">assets/videos/meldewege-[modus].mp4</span>
-      </div>
     </div>
   </div>
 
@@ -1455,6 +1435,7 @@ function goToScreen(id) {
     'screen-m1': initM1,
     'screen-m2': initM2,
     'screen-m3': initM3,
+    'screen-m4': initM4,
     'screen-judge': initJudgeGame,
     'screen-cert': initCert
   };
@@ -1574,10 +1555,20 @@ const videoUrls = {
     standard:     'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Modul_1_Mittel.mp4',
     vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Modul_1_Ausfuhrlich.mp4'
   },
+  m2: {
+    kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/M2/Modul.2.Kurz.mov',
+    standard:     'https://github.com/dominus-intelligence/framer/releases/download/M2/Modul.2.Mittel.mov',
+    vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/M2/Modul.2.Lang.mp4'
+  },
   m3: {
     kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/V2/Modul_3_Kurz.mp4',
     standard:     'https://github.com/dominus-intelligence/framer/releases/download/V2/Modul_3_Normal.mp4',
     vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/V2/Modul_3_Lang.mp4'
+  },
+  m4: {
+    kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/M2/Modul_4_Kurz.mp4',
+    standard:     'https://github.com/dominus-intelligence/framer/releases/download/M2/Modul_4_Normal.mp4',
+    vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/M2/Modul_4_Normal.mp4'
   }
 };
 
@@ -1586,6 +1577,7 @@ function loadVideo(videoId, srcId, module) {
   const srcEl = document.getElementById(srcId);
   const vid = document.getElementById(videoId);
   srcEl.src = src;
+  srcEl.type = src.endsWith('.mov') ? 'video/quicktime' : 'video/mp4';
   vid.load();
 }
 
@@ -1599,6 +1591,7 @@ function initM1() {
   if (!state.answered.m1) document.getElementById('btn-m1-next').disabled = true;
 }
 function initM2() {
+  loadVideo('video-m2', 'video-m2-src', 'm2');
   document.getElementById('theory-m2').innerHTML = theory.m2[state.testModus];
   if (!state.answered.m2a || !state.answered.m2b) document.getElementById('btn-m2-next').disabled = true;
 }
@@ -1606,6 +1599,10 @@ function initM3() {
   loadVideo('video-m3', 'video-m3-src', 'm3');
   document.getElementById('theory-m3').innerHTML = theory.m3[state.testModus];
   if (!state.answered.m3) document.getElementById('btn-m3-next').disabled = true;
+}
+
+function initM4() {
+  loadVideo('video-m4', 'video-m4-src', 'm4');
 }
 
 // ============================================================
