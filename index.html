@@ -860,21 +860,10 @@ input:focus { border-color: #E8392A; }
       <p style="font-size:13px;color:#777;margin-bottom:0;">Schau das Video an, bevor du weitergehst.</p>
     </div>
     <div class="video-block" style="border-radius:0;margin-bottom:0;">
-      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
-      <video controls style="width:100%;display:block;" preload="metadata">
-        <source src="assets/videos/mobbing-standard.mp4" type="video/mp4">
+      <video id="video-m1" controls style="width:100%;display:block;" preload="metadata">
+        <source id="video-m1-src" src="" type="video/mp4">
         Dein Browser unterstützt kein Video.
       </video>
-      -->
-      <div class="video-poster" id="video-m1-poster">
-        <div class="video-title-txt">Mobbing am Arbeitsplatz</div>
-        <div class="play-btn-circle"><div class="play-icon"></div></div>
-        <div class="video-caption">Video von NotebookLM einfügen</div>
-      </div>
-      <div class="video-info-bar">
-        <span id="video-m1-duration">Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename" id="video-m1-file">assets/videos/mobbing-[modus].mp4</span>
-      </div>
     </div>
   </div>
 
@@ -998,20 +987,10 @@ input:focus { border-color: #E8392A; }
       <p style="font-size:13px;color:#777;margin-bottom:0;">Auch gut gemeinte Ausgrenzung ist Diskriminierung.</p>
     </div>
     <div class="video-block" style="border-radius:0;margin-bottom:0;">
-      <div class="video-poster">
-        <div class="video-title-txt">Diskriminierung am Arbeitsplatz</div>
-        <div class="play-btn-circle"><div class="play-icon"></div></div>
-        <div class="video-caption">Video von NotebookLM einfügen</div>
-      </div>
-      <!-- VIDEO AKTIV: Kommentar entfernen wenn Datei vorhanden
-      <video controls style="width:100%;display:block;" preload="metadata">
-        <source src="assets/videos/diskriminierung-standard.mp4" type="video/mp4">
+      <video id="video-m3" controls style="width:100%;display:block;" preload="metadata">
+        <source id="video-m3-src" src="" type="video/mp4">
+        Dein Browser unterstützt kein Video.
       </video>
-      -->
-      <div class="video-info-bar">
-        <span>Kompakt ~90s · Standard ~4min · Vollständig ~8min</span>
-        <span class="video-filename">assets/videos/diskriminierung-[modus].mp4</span>
-      </div>
     </div>
   </div>
 
@@ -1584,21 +1563,38 @@ function submitPretest() {
 // ============================================================
 // MODULE INITS
 // ============================================================
-const introVideos = {
-  kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_kurz.mp4',
-  standard:     'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_normal.mp4',
-  vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_lang.mp4'
+const videoUrls = {
+  intro: {
+    kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_kurz.mp4',
+    standard:     'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_normal.mp4',
+    vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Einfuehrung_lang.mp4'
+  },
+  m1: {
+    kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Modul_1_Kompakt.mp4',
+    standard:     'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Modul_1_Mittel.mp4',
+    vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/v1.0/Modul_1_Ausfuhrlich.mp4'
+  },
+  m3: {
+    kompakt:      'https://github.com/dominus-intelligence/framer/releases/download/V2/Modul_3_Kurz.mp4',
+    standard:     'https://github.com/dominus-intelligence/framer/releases/download/V2/Modul_3_Normal.mp4',
+    vollstaendig: 'https://github.com/dominus-intelligence/framer/releases/download/V2/Modul_3_Lang.mp4'
+  }
 };
 
-function initIntro() {
-  const src = introVideos[state.testModus] || introVideos.standard;
-  const srcEl = document.getElementById('video-intro-src');
-  const vid = document.getElementById('video-intro');
+function loadVideo(videoId, srcId, module) {
+  const src = videoUrls[module][state.testModus] || videoUrls[module].standard;
+  const srcEl = document.getElementById(srcId);
+  const vid = document.getElementById(videoId);
   srcEl.src = src;
   vid.load();
 }
 
+function initIntro() {
+  loadVideo('video-intro', 'video-intro-src', 'intro');
+}
+
 function initM1() {
+  loadVideo('video-m1', 'video-m1-src', 'm1');
   document.getElementById('theory-m1').innerHTML = theory.m1[state.testModus];
   if (!state.answered.m1) document.getElementById('btn-m1-next').disabled = true;
 }
@@ -1607,6 +1603,7 @@ function initM2() {
   if (!state.answered.m2a || !state.answered.m2b) document.getElementById('btn-m2-next').disabled = true;
 }
 function initM3() {
+  loadVideo('video-m3', 'video-m3-src', 'm3');
   document.getElementById('theory-m3').innerHTML = theory.m3[state.testModus];
   if (!state.answered.m3) document.getElementById('btn-m3-next').disabled = true;
 }
